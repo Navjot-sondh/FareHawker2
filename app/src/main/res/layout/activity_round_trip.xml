@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.gajendrasharma.farehawker.RoundTripActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="95"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearlayout_header"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/bgBottomNavigation"
+        android:layout_height="wrap_content">
+        <LinearLayout
+           android:layout_width="wrap_content"
+           android:orientation="horizontal"
+           android:layout_weight="50"
+            android:layout_gravity="center"
+           android:layout_height="wrap_content">
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_weight="50"
+               android:orientation="horizontal">
+               <TextView
+                   android:id="@+id/activity_textoriginlocation"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20sp"
+                   android:text="DEL"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20sp"
+                   android:text="-"/>
+
+               <TextView
+                   android:id="@+id/activity_textdestination"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="20sp"
+                   android:text="JAI" />
+           </LinearLayout>
+           <LinearLayout
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:layout_weight="50"
+               android:orientation="horizontal">
+               <Spinner
+                   android:id="@+id/originfilter"
+                   android:layout_width="50sp"
+                   android:layout_height="wrap_content"/>
+           </LinearLayout>
+       </LinearLayout>
+        <View
+            android:layout_width="1dp"
+            android:background="@color/whitecolor"
+            android:layout_gravity="center"
+            android:layout_height="40sp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="50"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+              android:layout_weight="50"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/returndestinationlocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="JAI"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="-"/>
+
+                <TextView
+                    android:id="@+id/returnoriginlocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="DEL" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="50"
+                android:orientation="horizontal">
+                <Spinner
+                    android:id="@+id/returnfilter"
+                    android:layout_width="50sp"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/belowlayoutrecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_roundtriporigin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="50">
+        </android.support.v7.widget.RecyclerView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_roundtripreturn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="50">
+        </android.support.v7.widget.RecyclerView>
+    </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_weight="5"
+        android:layout_gravity="bottom"
+        android:background="@color/farehawkercolor"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/invisible_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            android:layout_gravity="bottom"
+            android:layout_weight="50">
+            <TextView
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginLeft="20sp"
+                android:textColor="@color/whitecolor"
+                android:text="₹"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/price_text"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="25sp"
+                android:layout_gravity="center"
+                android:textColor="@color/whitecolor"
+                android:text="0"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/book_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/whitecolor"
+            android:layout_gravity="center"
+            android:layout_weight="50"
+            android:text="Book Now"/>
+    </LinearLayout>
+</LinearLayout>
+
+
+

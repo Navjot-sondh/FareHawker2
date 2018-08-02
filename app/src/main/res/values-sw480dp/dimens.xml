@@ -1,0 +1,5 @@
+<resources>
+    <!--” 5.4 480x854 mdpi -->
+    <dimen name="width">480dp</dimen>
+    <dimen name="height">854dp</dimen>
+</resources>

@@ -1,0 +1,5 @@
+<resources>
+    <!--7 853 x 533  screent-->
+    <dimen name="width">533dp</dimen>
+    <dimen name="height">853dp</dimen>
+</resources>

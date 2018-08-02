@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="width">384dp</dimen>
+    <dimen name="height">600dp</dimen>
+</resources>

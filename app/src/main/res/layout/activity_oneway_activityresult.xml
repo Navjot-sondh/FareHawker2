@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gajendrasharma.farehawker.OnewayActivityresult">
+<LinearLayout
+    android:id="@+id/mainlinear"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_weight="50"
+    android:layout_height="wrap_content">
+    <View
+    android:id="@+id/view_uperlinearlayout"
+    android:layout_width="match_parent"
+    android:background="@color/whitecolor"
+    android:layout_height="1dp"/>
+    <LinearLayout
+        android:id="@+id/linearlayout_foronewayrecycleview"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/view_uperlinearlayout"
+        android:background="@color/farehawkercolor"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+
+            android:gravity="center_vertical"
+            android:layout_weight="70"
+            android:layout_height="34dp">
+
+            <TextView
+        android:id="@+id/origincodeo"
+        android:layout_width="wrap_content"
+        android:text="DEL"
+        android:textColor="@color/whitecolor"
+        android:textSize="15dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="20sp"
+        android:src="@drawable/longarrow"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:textColor="@color/whitecolor"
+        android:layout_height="25sp" />
+
+        <TextView
+            android:id="@+id/destcodeo"
+            android:layout_width="wrap_content"
+            android:text="BOM"
+            android:textColor="@color/whitecolor"
+            android:textSize="15dp"
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="30"
+            android:layout_height="34dp">
+
+            <Spinner
+                android:id="@+id/onewayspinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </Spinner>
+        </LinearLayout>
+</LinearLayout>
+</LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerviewlist_onewway"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5sp"
+        android:layout_below="@+id/mainlinear"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>

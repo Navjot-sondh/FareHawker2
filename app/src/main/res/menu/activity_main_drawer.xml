@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/homenew"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_makepayment"
+            android:icon="@drawable/paymentn"
+            android:title="Make Payment" />
+        <item
+            android:id="@+id/nav_printticket"
+            android:icon="@drawable/printer"
+            android:title="Print Ticket" />
+        <item
+            android:id="@+id/nav_gstinfo"
+            android:icon="@drawable/gstinfo"
+            android:title="GST Info.." />
+        <item
+            android:id="@+id/agentlogin"
+            android:icon="@drawable/agentlogin"
+            android:title="Agent Login" />
+        <item
+            android:id="@+id/nav_aboutus"
+            android:icon="@drawable/aboutuss"
+            android:title="About Us" />
+        <item
+            android:id="@+id/nav_customerservice"
+            android:icon="@drawable/customerservice"
+            android:title="Customer Service" />
+
+    </group>
+</menu>

@@ -1,0 +1,5 @@
+<resources>
+    <!--10  1280 x 800  screent-->
+    <dimen name="width">800dp</dimen>
+    <dimen name="height">1280dp</dimen>
+</resources>

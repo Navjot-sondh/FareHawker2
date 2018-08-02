@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+<TextView
+    android:id="@+id/origina"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/bgBottomNavigation"
+    android:textSize="20sp"
+    android:layout_marginRight="20sp"
+    android:layout_marginLeft="20sp"
+    android:textColor="@color/black"
+    android:text="Onward Flight"/>
+    <ListView
+        android:id="@+id/originlist"
+        android:background="@color/whitecolor"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="250sp">
+    </ListView>
+    <TextView
+        android:id="@+id/returna"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@color/bgBottomNavigation"
+        android:textSize="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:textColor="@color/black"
+        android:text="Return Flight"/>
+    <ListView
+        android:id="@+id/returnlist"
+        android:background="@color/whitecolor"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_height="wrap_content">
+    </ListView>
+</LinearLayout>
