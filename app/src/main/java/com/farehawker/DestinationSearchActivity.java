@@ -59,7 +59,8 @@ public class DestinationSearchActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
 
                         for (int i = 0; i < response.length(); i++) {
-                            try {
+                            try
+                            {
                                 JSONObject obj = response.getJSONObject(i);
                                 MovieNames dataSet = new MovieNames();
                                 dataSet.setName(obj.getString("airport_code"));

@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity
 
         //do whatever you want to do
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         buttn_fornextpage = (Button) findViewById(R.id.button_fornestpage);
