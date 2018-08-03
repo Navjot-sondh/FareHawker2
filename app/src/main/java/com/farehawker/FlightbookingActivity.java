@@ -64,7 +64,7 @@ import android.view.Gravity;
 
 public class FlightbookingActivity extends AppCompatActivity
 {
-    //Tag used in log
+    //Tag used in Log
     String TAG="FlightbookingActivity";
 
 
@@ -401,7 +401,9 @@ public class FlightbookingActivity extends AppCompatActivity
                                 // Must call show() prior to fetching text view
                                 TextView messageView = (TextView)dialog.findViewById(android.R.id.message);
                                 messageView.setGravity(Gravity.CENTER);
-                            } else {
+                            }
+                            //Executed when
+                            else {
                                 Intent in = new Intent(FlightbookingActivity.this, RoundTripActivity.class);
                                 in.putExtra("originround", fromc);
                                 in.putExtra("destinationround", toc);
