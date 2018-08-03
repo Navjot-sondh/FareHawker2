@@ -1,3 +1,4 @@
+
 package com.farehawker;
 
 import android.app.ProgressDialog;
@@ -44,6 +45,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    //Here this git testing You can delete this line.
     private static final String urlhorizontal="https://demo0977760.mockable.io/bestoffers";
     private List<OfferModel> groceryListmain;
     private RecyclerView groceryRecyclerView;
@@ -51,7 +53,8 @@ public class MainActivity extends AppCompatActivity
     Button buttn_fornextpage;
     LinearLayout linear_flight,linear_hotel,linear_privtjet,linear_groupbooking;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
