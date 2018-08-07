@@ -23,13 +23,16 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class PassengerDetails extends AppCompatActivity {
+public class PassengerDetails extends AppCompatActivity
+{
+    static int status=0;
     String orignp,destp,endipp,tokenp,resultindp,traceidonep,adultonep,childonep,infantsonep;
  //int child_count,infant_count;
 LinearLayout childmain,infantsmain;
 LinearLayout Linear_adult1,Linear_adult2,Linear_adult3,Linear_adult4,Linear_adult5,Linear_adult6,Linear_adult7,Linear_adult8,Linear_adult9;
 LinearLayout linear_child1,linear_child2,linear_child3,linear_child4,linear_child5,linear_child6,linear_child7,linear_child8;
 LinearLayout Linear_infant1,Linear_infant2,Linear_infant3,Linear_infant4;
+LinearLayout gstLinearLayout;
    TextView infant_DOB1,infant_DOB2,infant_DOB3,infant_DOB4;
 Spinner adult_sp1,adult_sp2,adult_sp3,adult_sp4,adult_sp5,adult_sp6,adult_sp7,adult_sp8,adult_sp9
         ,child_sp1,child_sp2,child_sp3,child_sp4,child_sp5,child_sp6,child_sp7,child_sp8,
@@ -155,6 +158,7 @@ Button contin_booking;
         Linear_infant3=(LinearLayout)findViewById(R.id.linear_infants3);
         Linear_infant4=(LinearLayout)findViewById(R.id.linear_infants4);
 
+        gstLinearLayout=(LinearLayout)findViewById(R.id.gstLinearLayout);
     if (childonep.equals("0")){
             childmain.setVisibility(View.GONE);
         }
@@ -288,6 +292,18 @@ Button contin_booking;
                 startActivity(inr);
             }
         });
+    }
+    public void makeGstVisible(View view)
+    {
+        if(status==0) {
+            gstLinearLayout.setVisibility(View.VISIBLE);
+            status=1;
+        }
+        else
+        {
+            gstLinearLayout.setVisibility(View.GONE);
+            status=0;
+        }
     }
     private void Spinner_count() {
 

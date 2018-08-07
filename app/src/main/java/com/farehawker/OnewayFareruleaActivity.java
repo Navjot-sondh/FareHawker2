@@ -5,8 +5,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -27,7 +27,6 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.farehawker.Adaptors.AppController;
 import com.farehawker.Adaptors.Fareoneway_adaptr;
 import com.farehawker.Adaptors.OnewaytermsAdaptr;
 import com.farehawker.Model.OnewayFare_model;
@@ -37,7 +36,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.awt.font.TextAttribute;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -146,6 +144,7 @@ public class OnewayFareruleaActivity extends AppCompatActivity {
                     try {
                         JSONObject firstobjsservo = response.getJSONObject("Response");
                         String responsstatus = firstobjsservo.getString("ResponseStatus");
+
                         if (!responsstatus.equals("1")) {
                             new AlertDialog.Builder(OnewayFareruleaActivity.this)
                                     .setMessage("Your session is expired please press ok")
@@ -199,7 +198,8 @@ public class OnewayFareruleaActivity extends AppCompatActivity {
         }
     }
 
-    private void makevolleyoneway() {
+    private void makevolleyoneway()
+    {
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading please wait ...");
@@ -222,6 +222,9 @@ public class OnewayFareruleaActivity extends AppCompatActivity {
                         JSONObject firstobjs = response.getJSONObject("Response");
                         String responsstatus = firstobjs.getString("ResponseStatus");
                         Log.wtf("resstatus", responsstatus);
+                        //Here check the response status if it is not one.
+                        //Then that means session has expired
+                        //restart OnewayFareruleaActivity through intent
                         if (!responsstatus.equals("1")) {
                             new AlertDialog.Builder(OnewayFareruleaActivity.this)
                                     .setMessage("Your session is expired please press ok")
@@ -234,6 +237,7 @@ public class OnewayFareruleaActivity extends AppCompatActivity {
                                     })
                                     .show();
                         }
+
                         JSONObject resultobject = firstobjs.getJSONObject("Results");
                         JSONObject Faresr = resultobject.getJSONObject("Fare");
                         //basefare

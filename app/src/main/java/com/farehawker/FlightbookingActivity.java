@@ -304,11 +304,19 @@ public class FlightbookingActivity extends AppCompatActivity
         Adults_btnminus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((count >1)&&(count>count_infants)) {
+                if ((count >1)&&(count>count_infants) ) {
                     count = count -1;
+
                     adult = String.valueOf(count);
                     text_Adult.setText(adult);
-                    text_infant.setText(adult);
+
+                }
+                else if(count==count_infants && (count>1))
+                {
+                    count=count-1;
+                    count_infants=count_infants-1;
+                    text_Adult.setText(Integer.toString(count));
+                    text_infant.setText(Integer.toString(count_infants));
                 }
             }
         });

@@ -1,19 +1,15 @@
 package com.farehawker;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,9 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.farehawker.Adaptors.AppController;
 import com.farehawker.Adaptors.OnewayAdaptor;
 import com.farehawker.Model.OnewayModelClass;
 
@@ -39,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OnewayActivityresult extends AppCompatActivity implements ClickListener {
+    String TAG ="OnewayActivityresult";
     private RecyclerView mRecyclerView;
     private OnewayAdaptor mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -47,7 +42,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
     Spinner spfiltr;
     String item;
     String EndUserIp="216.10.251.69";
-    String TokenId="68b8042e-c4f2-4589-b4a3-533124358682";
+    String TokenId="bbbb2963-24df-4ddd-a7f8-1b1bdc71b762";
     String traceid;
     String originacc_one,destinationacc_one,adultacc_one,childacc_one,infantacc_one,cabinacc_one,depdateacc_one,returndateacc_one;
     public static final String JSON_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
@@ -117,14 +112,17 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
         Toast.makeText(OnewayActivityresult.this, "mag" + originacc_one+"\n" + destinationacc_one+"\n" + adultacc_one +"\n"+ childacc_one+"\n" + infantacc_one+"\n" + cabinacc_one+"\n" + depdateacc_one +"\n"+ returndateacc_one, Toast.LENGTH_LONG).show();
 
     }
-    private void sendRequest() {
+    private void sendRequest()
+    {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading please wait ...");
         progressDialog.show();
-        try {
+        try
+        {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             //start bottom
             JSONObject objsagment = new JSONObject();
+
             Intent intent= getIntent();
             String aa = intent.getStringExtra("originround");
             String bb = intent.getStringExtra("destinationround");
@@ -144,7 +142,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
             //first object
             JSONObject jsonobjectt = new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId","68b8042e-c4f2-4589-b4a3-533124358682");
+            jsonobjectt.put("TokenId","bbbb2963-24df-4ddd-a7f8-1b1bdc71b762");
             jsonobjectt.put("AdultCount", String.valueOf(ad));
             jsonobjectt.put("ChildCount", String.valueOf(ch));
             jsonobjectt.put("InfantCount", String.valueOf(inf));
@@ -160,12 +158,14 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
+                                Log.i(TAG,"Line 164");
                                 Log.i("LOG_VOLLEY", response.toString());
                                 JSONObject firstobjs = response.getJSONObject("Response");
 
                                 traceid=firstobjs.getString("TraceId");
                                 JSONArray resultarray = firstobjs.getJSONArray("Results");
                                 JSONArray resulsetarray = resultarray.getJSONArray(0);
+                                Log.i(TAG,resulsetarray.toString());
                                 for (int i = 0; i < resulsetarray.length(); i++) {
                                     OnewayModelClass onewayset = new OnewayModelClass();
                                     JSONObject jobjet = resulsetarray.getJSONObject(i);
@@ -256,7 +256,8 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
                                     progressDialog.dismiss();
 
                                 }
-                            } catch (JSONException e) {
+                            } catch (JSONException e)
+                            {
                                 e.printStackTrace();
                             }
                             mAdapter = new OnewayAdaptor(OnewayActivityresult.this, mDataset);
