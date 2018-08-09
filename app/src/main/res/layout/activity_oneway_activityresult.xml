@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gajendrasharma.farehawker.OnewayActivityresult">
+    tools:context="com.farehawker.OnewayActivityresult">
 <LinearLayout
     android:id="@+id/mainlinear"
     android:layout_width="match_parent"

@@ -1,40 +1,28 @@
 package com.farehawker;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.farehawker.Adaptors.AppController;
 import com.farehawker.Adaptors.RoundtripOriginAdaptor;
 import com.farehawker.Adaptors.RoundtripReturnAdaptor;
 import com.farehawker.Model.RoundtripModelclass;
@@ -44,7 +32,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +52,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
     LinearLayout Linvisible;
     TextView Book_btn;
     String EndUserIp_Round="216.10.251.69";
-    String TokenId_Round="bbbb2963-24df-4ddd-a7f8-1b1bdc71b762";
+    String TokenId_Round="03787cd1-fc5a-4131-8a23-4752a7ae0cb2";
     String originacc,destinationacc,adultacc,childacc,infantacc,cabinacc,depdateacc,returndateacc;
     String urlJsonroundtrip ="http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
     @Override
@@ -209,7 +196,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             //first object
             JSONObject jsonobjectt= new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId","bbbb2963-24df-4ddd-a7f8-1b1bdc71b762");
+            jsonobjectt.put("TokenId","03787cd1-fc5a-4131-8a23-4752a7ae0cb2");
             jsonobjectt.put("AdultCount", "1");
             jsonobjectt.put("ChildCount", "0");
             jsonobjectt.put("InfantCount", "0");

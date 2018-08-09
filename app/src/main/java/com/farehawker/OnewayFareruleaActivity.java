@@ -118,6 +118,7 @@ public class OnewayFareruleaActivity extends AppCompatActivity {
         inn.putExtra("adultone",adultone);
         inn.putExtra("childone",childone);
         inn.putExtra("infantsone",infantsone);
+        inn.putExtra("totalFare",publish_oneway.getText().toString());//"totalFare",publish_oneway
            startActivity(inn);
           }
           });

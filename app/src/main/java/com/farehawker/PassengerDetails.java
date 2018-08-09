@@ -1,173 +1,183 @@
 package com.farehawker;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Locale;
 
 public class PassengerDetails extends AppCompatActivity
 {
-    static int status=0;
-    String orignp,destp,endipp,tokenp,resultindp,traceidonep,adultonep,childonep,infantsonep;
- //int child_count,infant_count;
-LinearLayout childmain,infantsmain;
-LinearLayout Linear_adult1,Linear_adult2,Linear_adult3,Linear_adult4,Linear_adult5,Linear_adult6,Linear_adult7,Linear_adult8,Linear_adult9;
-LinearLayout linear_child1,linear_child2,linear_child3,linear_child4,linear_child5,linear_child6,linear_child7,linear_child8;
-LinearLayout Linear_infant1,Linear_infant2,Linear_infant3,Linear_infant4;
-LinearLayout gstLinearLayout;
-   TextView infant_DOB1,infant_DOB2,infant_DOB3,infant_DOB4;
-Spinner adult_sp1,adult_sp2,adult_sp3,adult_sp4,adult_sp5,adult_sp6,adult_sp7,adult_sp8,adult_sp9
-        ,child_sp1,child_sp2,child_sp3,child_sp4,child_sp5,child_sp6,child_sp7,child_sp8,
-    infant_sp1,infant_sp2,infant_sp3,infant_sp4;
-    String item,itemA2,itemA3,itemA4,itemA5,itemA6,itemA7,itemA8,itemA9
-           ,itemC1,itemC2,itemC3,itemC4,itemC5,itemC6,itemC7,itemC8
-            ,itemI1,itemI2,itemI3,itemI4;
-    TextView adultcount,childcount,infantscount;
+    EditText couponCode;
+    String TAG = "PassengerDetails";
+    TextView TotalFare;
+    static int status = 0;
+    String orignp, destp, endipp, tokenp, resultindp, traceidonep, adultonep, childonep, infantsonep;
+    //int child_count,infant_count;
+    LinearLayout childmain, infantsmain;
+    LinearLayout Linear_adult1, Linear_adult2, Linear_adult3, Linear_adult4, Linear_adult5, Linear_adult6, Linear_adult7, Linear_adult8, Linear_adult9;
+    LinearLayout linear_child1, linear_child2, linear_child3, linear_child4, linear_child5, linear_child6, linear_child7, linear_child8;
+    LinearLayout Linear_infant1, Linear_infant2, Linear_infant3, Linear_infant4;
+    LinearLayout gstLinearLayout;
+    TextView infant_DOB1, infant_DOB2, infant_DOB3, infant_DOB4;
+    Spinner adult_sp1, adult_sp2, adult_sp3, adult_sp4, adult_sp5, adult_sp6, adult_sp7, adult_sp8, adult_sp9, child_sp1, child_sp2, child_sp3, child_sp4, child_sp5, child_sp6, child_sp7, child_sp8,
+            infant_sp1, infant_sp2, infant_sp3, infant_sp4;
+    String item, itemA2, itemA3, itemA4, itemA5, itemA6, itemA7, itemA8, itemA9, itemC1, itemC2, itemC3, itemC4, itemC5, itemC6, itemC7, itemC8, itemI1, itemI2, itemI3, itemI4;
+    TextView adultcount, childcount, infantscount;
 
-    TextView text_adultF1,text_adultF2,text_adultF3,text_adultF4,text_adultF5,text_adultF6,text_adultF7,text_adultF8,text_adultF9,
-    text_adultL1,text_adultL2,text_adultL3,text_adultL4,text_adultL5,text_adultL6,text_adultL7,text_adultL8,text_adultL9,
-            text_childF1,text_childF2,text_childF3,text_childF4,text_childF5,text_childF6,text_childF7,text_childF8,
-            text_childL1,text_childL2,text_childL3,text_childL4,text_childL5,text_childL6,text_childL7,text_childL8,
-            text_infantF1,text_infantF2,text_infantF3,text_infantF4;
-    String Adultstring,Adultstring2,Adultstring3,Adultstring4,Adultstring5,Adultstring6,Adultstring7,Adultstring8,Adultstring9,
-        childstring,childstring2,childstring3,childstring4,childstring5,childstring6,childstring7,childstring8,
-        infantstring,infantstring2,infantstring3,infantstring4,AdLstring,AdLstring2,AdLstring3,AdLstring4,
-            AdLstring5,AdLstring6,AdLstring7,AdLstring8,AdLstring9,
-          ChL,ChL2,ChL3,ChL4,ChL5,ChL6,ChL7,ChL8,INL,INL2,INL3,INL4;
+    TextView text_adultF1, text_adultF2, text_adultF3, text_adultF4, text_adultF5, text_adultF6, text_adultF7, text_adultF8, text_adultF9,
+            text_adultL1, text_adultL2, text_adultL3, text_adultL4, text_adultL5, text_adultL6, text_adultL7, text_adultL8, text_adultL9,
+            text_childF1, text_childF2, text_childF3, text_childF4, text_childF5, text_childF6, text_childF7, text_childF8,
+            text_childL1, text_childL2, text_childL3, text_childL4, text_childL5, text_childL6, text_childL7, text_childL8,
+            text_infantF1, text_infantF2, text_infantF3, text_infantF4;
+    String Adultstring, Adultstring2, Adultstring3, Adultstring4, Adultstring5, Adultstring6, Adultstring7, Adultstring8, Adultstring9,
+            childstring, childstring2, childstring3, childstring4, childstring5, childstring6, childstring7, childstring8,
+            infantstring, infantstring2, infantstring3, infantstring4, AdLstring, AdLstring2, AdLstring3, AdLstring4,
+            AdLstring5, AdLstring6, AdLstring7, AdLstring8, AdLstring9,
+            ChL, ChL2, ChL3, ChL4, ChL5, ChL6, ChL7, ChL8, INL, INL2, INL3, INL4;
 
 
-   String spn_adult1,spn_adult2,spn_adult3,spn_adult4,spn_adult5,spn_adult6,spn_adult7,spn_adult8,spn_adult9,
-           spn_child1,spn_child2,spn_child3,spn_child4,spn_child5,spn_child6,spn_child7,spn_child8,
-           spn_infant1,spn_infant2,spn_infant3,spn_infant4;
-Button contin_booking;
-@Override
+    String spn_adult1, spn_adult2, spn_adult3, spn_adult4, spn_adult5, spn_adult6, spn_adult7, spn_adult8, spn_adult9,
+            spn_child1, spn_child2, spn_child3, spn_child4, spn_child5, spn_child6, spn_child7, spn_child8,
+            spn_infant1, spn_infant2, spn_infant3, spn_infant4;
+    Button contin_booking;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_passenger_details);
-        Intent intent= getIntent();
+        TotalFare = findViewById(R.id.TotalFare);
+        couponCode = findViewById(R.id.couponCode);
+        Intent intent = getIntent();
         orignp = intent.getStringExtra("originv");
         destp = intent.getStringExtra("destinav");
         endipp = intent.getStringExtra("enduserip");
         tokenp = intent.getStringExtra("tokenid");
-        resultindp=intent.getStringExtra("resultindex");
-        traceidonep=intent.getStringExtra("traceid");
-        adultonep=intent.getStringExtra("adultone");
-        childonep=intent.getStringExtra("childone");
-        infantsonep=intent.getStringExtra("infantsone");
-        Toast.makeText(PassengerDetails.this, "mag" + orignp+"\n" + destp+"\n" + endipp +"\n"+ tokenp+"\n"+resultindp+"\n"+traceidonep+"\n"+adultonep+"\n"+childonep+"\n"+infantsonep, Toast.LENGTH_LONG).show();
-       infantsdob();
-       Spinner_count();
-       chilld_sappier();
-       infants_sappier();
-       adultcount=(TextView)findViewById(R.id.maincount_adult);
-       childcount=(TextView)findViewById(R.id.maincount_child);
-       infantscount=(TextView)findViewById(R.id.infants_count);
-       adultcount.setText(adultonep);
-       childcount.setText(childonep);
-       infantscount.setText(infantsonep);
-       childmain=(LinearLayout)findViewById(R.id.childmain_main);
-       infantsmain=(LinearLayout)findViewById(R.id.infants_main);
+        resultindp = intent.getStringExtra("resultindex");
+        traceidonep = intent.getStringExtra("traceid");
+        adultonep = intent.getStringExtra("adultone");
+        childonep = intent.getStringExtra("childone");
+        infantsonep = intent.getStringExtra("infantsone");
+        //totalFare=intent.getStringExtra("totalFare");
+        // Log.i(TAG,totalFare);
+        TotalFare.setText(intent.getStringExtra("totalFare"));
+        Toast.makeText(PassengerDetails.this, "mag" + orignp + "\n" + destp + "\n" + endipp + "\n" + tokenp + "\n" + resultindp + "\n" + traceidonep + "\n" + adultonep + "\n" + childonep + "\n" + infantsonep, Toast.LENGTH_LONG).show();
+        infantsdob();
+        Spinner_count();
+        chilld_sappier();
+        infants_sappier();
+        adultcount = (TextView) findViewById(R.id.maincount_adult);
+        childcount = (TextView) findViewById(R.id.maincount_child);
+        infantscount = (TextView) findViewById(R.id.infants_count);
+        adultcount.setText(adultonep);
+        childcount.setText(childonep);
+        infantscount.setText(infantsonep);
+        childmain = (LinearLayout) findViewById(R.id.childmain_main);
+        infantsmain = (LinearLayout) findViewById(R.id.infants_main);
 
-    text_adultF1=(TextView)findViewById(R.id.adult_firstname);
-    text_adultF2=(TextView)findViewById(R.id.adult2_firstname);
-    text_adultF3=(TextView)findViewById(R.id.adult3_firstname);
-    text_adultF4=(TextView)findViewById(R.id.adult4_firstname);
-    text_adultF5=(TextView)findViewById(R.id.adult5_firstname);
-    text_adultF6=(TextView)findViewById(R.id.adult6_firstname);
-    text_adultF7=(TextView)findViewById(R.id.adult7_firstname);
-    text_adultF8=(TextView)findViewById(R.id.adult8_firstname);
-    text_adultF9=(TextView)findViewById(R.id.adult9_firstname);
+        text_adultF1 = (TextView) findViewById(R.id.adult_firstname);
+        text_adultF2 = (TextView) findViewById(R.id.adult2_firstname);
+        text_adultF3 = (TextView) findViewById(R.id.adult3_firstname);
+        text_adultF4 = (TextView) findViewById(R.id.adult4_firstname);
+        text_adultF5 = (TextView) findViewById(R.id.adult5_firstname);
+        text_adultF6 = (TextView) findViewById(R.id.adult6_firstname);
+        text_adultF7 = (TextView) findViewById(R.id.adult7_firstname);
+        text_adultF8 = (TextView) findViewById(R.id.adult8_firstname);
+        text_adultF9 = (TextView) findViewById(R.id.adult9_firstname);
 
-    text_adultL1=(TextView)findViewById(R.id.adult_lastname);
-    text_adultL2=(TextView)findViewById(R.id.adult2_lastname);
-    text_adultL3=(TextView)findViewById(R.id.adult3_lastname);
-    text_adultL4=(TextView)findViewById(R.id.adult4_lastname);
-    text_adultL5=(TextView)findViewById(R.id.adult5_lastname);
-    text_adultL6=(TextView)findViewById(R.id.adult6_lastname);
-    text_adultL7=(TextView)findViewById(R.id.adult7_lastname);
-    text_adultL8=(TextView)findViewById(R.id.adult8_lastname);
-    text_adultL9=(TextView)findViewById(R.id.adult9_lastname);
+        text_adultL1 = (TextView) findViewById(R.id.adult_lastname);
+        text_adultL2 = (TextView) findViewById(R.id.adult2_lastname);
+        text_adultL3 = (TextView) findViewById(R.id.adult3_lastname);
+        text_adultL4 = (TextView) findViewById(R.id.adult4_lastname);
+        text_adultL5 = (TextView) findViewById(R.id.adult5_lastname);
+        text_adultL6 = (TextView) findViewById(R.id.adult6_lastname);
+        text_adultL7 = (TextView) findViewById(R.id.adult7_lastname);
+        text_adultL8 = (TextView) findViewById(R.id.adult8_lastname);
+        text_adultL9 = (TextView) findViewById(R.id.adult9_lastname);
 
-    text_childF1=(TextView)findViewById(R.id.child1_firstname);
-    text_childF2=(TextView)findViewById(R.id.child2_firstname);
-    text_childF3=(TextView)findViewById(R.id.child3_firstname);
-    text_childF4=(TextView)findViewById(R.id.child4_firstname);
-    text_childF5=(TextView)findViewById(R.id.child5_firstname);
-    text_childF6=(TextView)findViewById(R.id.child6_firstname);
-    text_childF7=(TextView)findViewById(R.id.child7_firstname);
-    text_childF8=(TextView)findViewById(R.id.child8_firstname);
+        text_childF1 = (TextView) findViewById(R.id.child1_firstname);
+        text_childF2 = (TextView) findViewById(R.id.child2_firstname);
+        text_childF3 = (TextView) findViewById(R.id.child3_firstname);
+        text_childF4 = (TextView) findViewById(R.id.child4_firstname);
+        text_childF5 = (TextView) findViewById(R.id.child5_firstname);
+        text_childF6 = (TextView) findViewById(R.id.child6_firstname);
+        text_childF7 = (TextView) findViewById(R.id.child7_firstname);
+        text_childF8 = (TextView) findViewById(R.id.child8_firstname);
 
-    text_childL1=(TextView)findViewById(R.id.child1_lastname);
-    text_childL2=(TextView)findViewById(R.id.child2_lastname);
-    text_childL3=(TextView)findViewById(R.id.child3_lastname);
-    text_childL4=(TextView)findViewById(R.id.child4_lastname);
-    text_childL5=(TextView)findViewById(R.id.child5_lastname);
-    text_childL6=(TextView)findViewById(R.id.child6_lastname);
-    text_childL7=(TextView)findViewById(R.id.child7_lastname);
-    text_childL8=(TextView)findViewById(R.id.child8_lastname);
+        text_childL1 = (TextView) findViewById(R.id.child1_lastname);
+        text_childL2 = (TextView) findViewById(R.id.child2_lastname);
+        text_childL3 = (TextView) findViewById(R.id.child3_lastname);
+        text_childL4 = (TextView) findViewById(R.id.child4_lastname);
+        text_childL5 = (TextView) findViewById(R.id.child5_lastname);
+        text_childL6 = (TextView) findViewById(R.id.child6_lastname);
+        text_childL7 = (TextView) findViewById(R.id.child7_lastname);
+        text_childL8 = (TextView) findViewById(R.id.child8_lastname);
 
-    text_infantF1=(TextView)findViewById(R.id.infants1_firstname);
-    text_infantF2=(TextView)findViewById(R.id.infants2_firstname);
-    text_infantF3=(TextView)findViewById(R.id.infants3_firstname);
-    text_infantF4=(TextView)findViewById(R.id.infants4_firstname);
-
-
+        text_infantF1 = (TextView) findViewById(R.id.infants1_firstname);
+        text_infantF2 = (TextView) findViewById(R.id.infants2_firstname);
+        text_infantF3 = (TextView) findViewById(R.id.infants3_firstname);
+        text_infantF4 = (TextView) findViewById(R.id.infants4_firstname);
 
 
+        Linear_adult1 = (LinearLayout) findViewById(R.id.linear_adult1);
+        Linear_adult2 = (LinearLayout) findViewById(R.id.linear_adult2);
+        Linear_adult3 = (LinearLayout) findViewById(R.id.linear_adult3);
+        Linear_adult4 = (LinearLayout) findViewById(R.id.linear_adult4);
+        Linear_adult5 = (LinearLayout) findViewById(R.id.linear_adult5);
+        Linear_adult6 = (LinearLayout) findViewById(R.id.linear_adult6);
+        Linear_adult7 = (LinearLayout) findViewById(R.id.linear_adult7);
+        Linear_adult8 = (LinearLayout) findViewById(R.id.linear_adult8);
+        Linear_adult9 = (LinearLayout) findViewById(R.id.linear_adult9);
 
+        linear_child1 = (LinearLayout) findViewById(R.id.linear_child1);
+        linear_child2 = (LinearLayout) findViewById(R.id.linear_child2);
+        linear_child3 = (LinearLayout) findViewById(R.id.linear_child3);
+        linear_child4 = (LinearLayout) findViewById(R.id.linear_child4);
+        linear_child5 = (LinearLayout) findViewById(R.id.linear_child5);
+        linear_child6 = (LinearLayout) findViewById(R.id.linear_child6);
+        linear_child7 = (LinearLayout) findViewById(R.id.linear_child7);
+        linear_child8 = (LinearLayout) findViewById(R.id.linear_child8);
 
-        Linear_adult1=(LinearLayout)findViewById(R.id.linear_adult1);
-        Linear_adult2=(LinearLayout)findViewById(R.id.linear_adult2);
-        Linear_adult3=(LinearLayout)findViewById(R.id.linear_adult3);
-        Linear_adult4=(LinearLayout)findViewById(R.id.linear_adult4);
-        Linear_adult5=(LinearLayout)findViewById(R.id.linear_adult5);
-        Linear_adult6=(LinearLayout)findViewById(R.id.linear_adult6);
-        Linear_adult7=(LinearLayout)findViewById(R.id.linear_adult7);
-        Linear_adult8=(LinearLayout)findViewById(R.id.linear_adult8);
-        Linear_adult9=(LinearLayout)findViewById(R.id.linear_adult9);
+        Linear_infant1 = (LinearLayout) findViewById(R.id.linear_infants1);
+        Linear_infant2 = (LinearLayout) findViewById(R.id.linear_infants2);
+        Linear_infant3 = (LinearLayout) findViewById(R.id.linear_infants3);
+        Linear_infant4 = (LinearLayout) findViewById(R.id.linear_infants4);
 
-        linear_child1=(LinearLayout)findViewById(R.id.linear_child1);
-        linear_child2=(LinearLayout)findViewById(R.id.linear_child2);
-        linear_child3=(LinearLayout)findViewById(R.id.linear_child3);
-        linear_child4=(LinearLayout)findViewById(R.id.linear_child4);
-        linear_child5=(LinearLayout)findViewById(R.id.linear_child5);
-        linear_child6=(LinearLayout)findViewById(R.id.linear_child6);
-        linear_child7=(LinearLayout)findViewById(R.id.linear_child7);
-        linear_child8=(LinearLayout)findViewById(R.id.linear_child8);
-
-        Linear_infant1=(LinearLayout)findViewById(R.id.linear_infants1);
-        Linear_infant2=(LinearLayout)findViewById(R.id.linear_infants2);
-        Linear_infant3=(LinearLayout)findViewById(R.id.linear_infants3);
-        Linear_infant4=(LinearLayout)findViewById(R.id.linear_infants4);
-
-        gstLinearLayout=(LinearLayout)findViewById(R.id.gstLinearLayout);
-    if (childonep.equals("0")){
+        gstLinearLayout = (LinearLayout) findViewById(R.id.gstLinearLayout);
+        if (childonep.equals("0")) {
             childmain.setVisibility(View.GONE);
         }
-        if (infantsonep.equals("0")){
+        if (infantsonep.equals("0")) {
             infantsmain.setVisibility(View.GONE);
         }
 
         //for adult
-        if (adultonep.equals("1")){
+        if (adultonep.equals("1")) {
             Linear_adult2.setVisibility(View.GONE);
             Linear_adult3.setVisibility(View.GONE);
             Linear_adult4.setVisibility(View.GONE);
@@ -177,7 +187,8 @@ Button contin_booking;
             Linear_adult8.setVisibility(View.GONE);
             Linear_adult9.setVisibility(View.GONE);
 
-        }if (adultonep.equals("2")){
+        }
+        if (adultonep.equals("2")) {
             Linear_adult3.setVisibility(View.GONE);
             Linear_adult4.setVisibility(View.GONE);
             Linear_adult5.setVisibility(View.GONE);
@@ -186,7 +197,8 @@ Button contin_booking;
             Linear_adult8.setVisibility(View.GONE);
             Linear_adult9.setVisibility(View.GONE);
 
-        }if (adultonep.equals("3")){
+        }
+        if (adultonep.equals("3")) {
             Linear_adult4.setVisibility(View.GONE);
             Linear_adult5.setVisibility(View.GONE);
             Linear_adult6.setVisibility(View.GONE);
@@ -194,38 +206,43 @@ Button contin_booking;
             Linear_adult8.setVisibility(View.GONE);
             Linear_adult9.setVisibility(View.GONE);
 
-        }if (adultonep.equals("4")){
+        }
+        if (adultonep.equals("4")) {
             Linear_adult5.setVisibility(View.GONE);
             Linear_adult6.setVisibility(View.GONE);
             Linear_adult7.setVisibility(View.GONE);
             Linear_adult8.setVisibility(View.GONE);
             Linear_adult9.setVisibility(View.GONE);
 
-        }if (adultonep.equals("5")){
+        }
+        if (adultonep.equals("5")) {
 
             Linear_adult6.setVisibility(View.GONE);
             Linear_adult7.setVisibility(View.GONE);
             Linear_adult8.setVisibility(View.GONE);
             Linear_adult9.setVisibility(View.GONE);
 
-        }if (adultonep.equals("6")){
+        }
+        if (adultonep.equals("6")) {
 
             Linear_adult7.setVisibility(View.GONE);
             Linear_adult8.setVisibility(View.GONE);
             Linear_adult9.setVisibility(View.GONE);
 
-        }if (adultonep.equals("7")){
+        }
+        if (adultonep.equals("7")) {
 
             Linear_adult8.setVisibility(View.GONE);
             Linear_adult9.setVisibility(View.GONE);
 
-        }if (adultonep.equals("8")){
+        }
+        if (adultonep.equals("8")) {
 
             Linear_adult9.setVisibility(View.GONE);
-    }
+        }
 
         //for child
-        if (childonep.equals("1")){
+        if (childonep.equals("1")) {
             linear_child2.setVisibility(View.GONE);
             linear_child3.setVisibility(View.GONE);
             linear_child4.setVisibility(View.GONE);
@@ -234,7 +251,8 @@ Button contin_booking;
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
 
-        }if (childonep.equals("2")){
+        }
+        if (childonep.equals("2")) {
             linear_child3.setVisibility(View.GONE);
             linear_child4.setVisibility(View.GONE);
             linear_child5.setVisibility(View.GONE);
@@ -242,72 +260,78 @@ Button contin_booking;
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
 
-        }if (childonep.equals("3")){
+        }
+        if (childonep.equals("3")) {
             linear_child4.setVisibility(View.GONE);
             linear_child5.setVisibility(View.GONE);
             linear_child6.setVisibility(View.GONE);
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
 
-        }if (childonep.equals("4")){
+        }
+        if (childonep.equals("4")) {
             linear_child5.setVisibility(View.GONE);
             linear_child6.setVisibility(View.GONE);
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
 
-        }if (childonep.equals("5")){
+        }
+        if (childonep.equals("5")) {
             linear_child6.setVisibility(View.GONE);
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
 
-        }if (childonep.equals("6")){
+        }
+        if (childonep.equals("6")) {
             linear_child7.setVisibility(View.GONE);
             linear_child8.setVisibility(View.GONE);
-        }if (childonep.equals("7")){
+        }
+        if (childonep.equals("7")) {
             linear_child8.setVisibility(View.GONE);
         }
-    //for infants
-        if (infantsonep.equals("1")){
+        //for infants
+        if (infantsonep.equals("1")) {
             Linear_infant2.setVisibility(View.GONE);
             Linear_infant3.setVisibility(View.GONE);
             Linear_infant4.setVisibility(View.GONE);
-        }if (infantsonep.equals("2")){
+        }
+        if (infantsonep.equals("2")) {
             Linear_infant3.setVisibility(View.GONE);
             Linear_infant4.setVisibility(View.GONE);
-    }if (infantsonep.equals("3")){
+        }
+        if (infantsonep.equals("3")) {
 
             Linear_infant4.setVisibility(View.GONE);
-    }
+        }
 
-    final String Adultstr =text_adultF1.getText().toString();
-     final String adl =text_adultL1.getText().toString();
-        contin_booking=(Button)findViewById(R.id.contineee);
+        final String Adultstr = text_adultF1.getText().toString();
+        final String adl = text_adultL1.getText().toString();
+        contin_booking = (Button) findViewById(R.id.contineee);
         contin_booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inr=new Intent(PassengerDetails.this,Reviewdetails.class);
-                inr.putExtra("adF",Adultstring);
-                inr.putExtra("adL",AdLstring);
-                Toast.makeText(getApplicationContext(),Adultstr+adl,Toast.LENGTH_SHORT).show();
+                Intent inr = new Intent(PassengerDetails.this, Reviewdetails.class);
+                inr.putExtra("adF", Adultstring);
+                inr.putExtra("adL", AdLstring);
+                Toast.makeText(getApplicationContext(), Adultstr + adl, Toast.LENGTH_SHORT).show();
                 startActivity(inr);
             }
         });
     }
-    public void makeGstVisible(View view)
-    {
-        if(status==0) {
+
+    public void makeGstVisible(View view) {
+        if (status == 0) {
             gstLinearLayout.setVisibility(View.VISIBLE);
-            status=1;
-        }
-        else
-        {
+            status = 1;
+        } else {
             gstLinearLayout.setVisibility(View.GONE);
-            status=0;
+            status = 0;
         }
     }
+
     private void Spinner_count() {
 
-        adult_sp1=(Spinner)findViewById(R.id.spinner_adult);
+        adult_sp1 = (Spinner) findViewById(R.id.spinner_adult);
         List<String> onewatcate = new ArrayList<String>();
         onewatcate.add("Mr");
         onewatcate.add("Ms");
@@ -323,19 +347,20 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 item = parent.getItemAtPosition(position).toString();
                 if (item.equals("Mr")) {
-                    spn_adult1=item;
-                    Toast.makeText(parent.getContext(), "Selected: " + item , Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_adult1=item;
-                    Toast.makeText(parent.getContext(), "Selected: " + item , Toast.LENGTH_SHORT).show();
+                    spn_adult1 = item;
+                    Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
+                } else {
+                    spn_adult1 = item;
+                    Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        adult_sp2=(Spinner)findViewById(R.id.spinner_adult2);
+        adult_sp2 = (Spinner) findViewById(R.id.spinner_adult2);
         List<String> listA2 = new ArrayList<String>();
         listA2.add("Mr");
         listA2.add("Ms");
@@ -351,20 +376,21 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemA2 = parent.getItemAtPosition(position).toString();
                 if (itemA2.equals("Mr")) {
-                    spn_adult2=itemA2;
+                    spn_adult2 = itemA2;
                     Toast.makeText(parent.getContext(), "Selected:adult2 " + itemA2, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_adult2=itemA2;
+                } else {
+                    spn_adult2 = itemA2;
                     Toast.makeText(parent.getContext(), "Selected:adult2 " + itemA2, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
 
-        adult_sp3=(Spinner)findViewById(R.id.spinner_adult3);
+        adult_sp3 = (Spinner) findViewById(R.id.spinner_adult3);
         List<String> listA3 = new ArrayList<String>();
         listA3.add("Mr");
         listA3.add("Ms");
@@ -380,20 +406,21 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemA3 = parent.getItemAtPosition(position).toString();
                 if (itemA3.equals("Mr")) {
-                    spn_adult3=itemA3;
+                    spn_adult3 = itemA3;
                     Toast.makeText(parent.getContext(), "Selected:adult3 " + itemA3, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_adult3=itemA3;
+                } else {
+                    spn_adult3 = itemA3;
                     Toast.makeText(parent.getContext(), "Selected:adult3 " + itemA3, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
 
-        adult_sp4=(Spinner)findViewById(R.id.spinner_adult4);
+        adult_sp4 = (Spinner) findViewById(R.id.spinner_adult4);
         List<String> listA4 = new ArrayList<String>();
         listA4.add("Mr");
         listA4.add("Ms");
@@ -409,20 +436,21 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemA4 = parent.getItemAtPosition(position).toString();
                 if (itemA4.equals("Mr")) {
-                    spn_adult4=itemA4;
+                    spn_adult4 = itemA4;
                     Toast.makeText(parent.getContext(), "Selected:adult4 " + itemA4, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_adult4=itemA4;
+                } else {
+                    spn_adult4 = itemA4;
                     Toast.makeText(parent.getContext(), "Selected:adult4 " + itemA4, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
 
-        adult_sp5=(Spinner)findViewById(R.id.spinner_adult5);
+        adult_sp5 = (Spinner) findViewById(R.id.spinner_adult5);
         List<String> listA5 = new ArrayList<String>();
         listA5.add("Mr");
         listA5.add("Ms");
@@ -438,20 +466,21 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemA5 = parent.getItemAtPosition(position).toString();
                 if (itemA5.equals("Mr")) {
-                    spn_adult5=itemA5;
+                    spn_adult5 = itemA5;
                     Toast.makeText(parent.getContext(), "Selected:adult5 " + itemA5, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_adult5=itemA5;
+                } else {
+                    spn_adult5 = itemA5;
                     Toast.makeText(parent.getContext(), "Selected:adult5 " + itemA5, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
 
-        adult_sp6=(Spinner)findViewById(R.id.spinner_adult6);
+        adult_sp6 = (Spinner) findViewById(R.id.spinner_adult6);
         List<String> listA6 = new ArrayList<String>();
         listA6.add("Mr");
         listA6.add("Ms");
@@ -467,19 +496,20 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemA6 = parent.getItemAtPosition(position).toString();
                 if (itemA6.equals("Mr")) {
-                    spn_adult6=itemA6;
+                    spn_adult6 = itemA6;
                     Toast.makeText(parent.getContext(), "Selected: adult6" + itemA6, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_adult6=itemA6;
+                } else {
+                    spn_adult6 = itemA6;
                     Toast.makeText(parent.getContext(), "Selected: adult6" + itemA6, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        adult_sp7=(Spinner)findViewById(R.id.spinner_adult7);
+        adult_sp7 = (Spinner) findViewById(R.id.spinner_adult7);
         List<String> listA7 = new ArrayList<String>();
         listA7.add("Mr");
         listA7.add("Ms");
@@ -495,20 +525,21 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemA7 = parent.getItemAtPosition(position).toString();
                 if (itemA7.equals("Mr")) {
-                    spn_adult7=itemA7;
+                    spn_adult7 = itemA7;
                     Toast.makeText(parent.getContext(), "Selected: adult7" + itemA7, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_adult7=itemA7;
+                } else {
+                    spn_adult7 = itemA7;
                     Toast.makeText(parent.getContext(), "Selected:adult7 " + itemA7, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
 
-        adult_sp8=(Spinner)findViewById(R.id.spinner_adult8);
+        adult_sp8 = (Spinner) findViewById(R.id.spinner_adult8);
         List<String> listA8 = new ArrayList<String>();
         listA8.add("Mr");
         listA8.add("Ms");
@@ -524,20 +555,21 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemA8 = parent.getItemAtPosition(position).toString();
                 if (itemA8.equals("Mr")) {
-                    spn_adult8=itemA8;
+                    spn_adult8 = itemA8;
                     Toast.makeText(parent.getContext(), "Selected:adult8 " + itemA8, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_adult8=itemA8;
+                } else {
+                    spn_adult8 = itemA8;
                     Toast.makeText(parent.getContext(), "Selected:adult8 " + itemA8, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
 
-        adult_sp9=(Spinner)findViewById(R.id.spinner_adult9);
+        adult_sp9 = (Spinner) findViewById(R.id.spinner_adult9);
         List<String> listA9 = new ArrayList<String>();
         listA9.add("Mr");
         listA9.add("Ms");
@@ -553,22 +585,24 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemA9 = parent.getItemAtPosition(position).toString();
                 if (itemA2.equals("Mr")) {
-                    spn_adult9=itemA9;
+                    spn_adult9 = itemA9;
                     Toast.makeText(parent.getContext(), "Selected:adult9 " + itemA9, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_adult9=itemA9;
+                } else {
+                    spn_adult9 = itemA9;
                     Toast.makeText(parent.getContext(), "Selected:adult9 " + itemA9, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
     }
+
     private void chilld_sappier() {
 
-        child_sp1=(Spinner)findViewById(R.id.spinner_child1);
+        child_sp1 = (Spinner) findViewById(R.id.spinner_child1);
         List<String> listC1 = new ArrayList<String>();
         listC1.add("Mstr");
         listC1.add("Miss");
@@ -584,22 +618,24 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemC1 = parent.getItemAtPosition(position).toString();
                 if (itemC1.equals("Mstr")) {
-                    spn_child1=itemC1;
+                    spn_child1 = itemC1;
                     Toast.makeText(parent.getContext(), "Selected:child1 " + itemC1, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_child1=itemC1;
+                } else {
+                    spn_child1 = itemC1;
                     Toast.makeText(parent.getContext(), "Selected:child1 " + itemC1, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        child_sp2=(Spinner)findViewById(R.id.spinner_child2);
+        child_sp2 = (Spinner) findViewById(R.id.spinner_child2);
         List<String> listC2 = new ArrayList<String>();
         listC2.add("Mstr");
-        listC2.add("Miss");;
+        listC2.add("Miss");
+        ;
         // Creating adapter for spinner
         ArrayAdapter<String> AdapterC9 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listC2);
         // Drop down layout style - list view with radio button
@@ -612,19 +648,20 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemC2 = parent.getItemAtPosition(position).toString();
                 if (itemC2.equals("Mstr")) {
-                    spn_child2=itemC2;
+                    spn_child2 = itemC2;
                     Toast.makeText(parent.getContext(), "Selected:child2 " + itemC2, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_child2=itemC2;
+                } else {
+                    spn_child2 = itemC2;
                     Toast.makeText(parent.getContext(), "Selected:child2 " + itemC2, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        child_sp3=(Spinner)findViewById(R.id.spinner_child3);
+        child_sp3 = (Spinner) findViewById(R.id.spinner_child3);
         List<String> listC3 = new ArrayList<String>();
         listC3.add("Mstr");
         listC3.add("Miss");
@@ -640,19 +677,20 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemC3 = parent.getItemAtPosition(position).toString();
                 if (itemC3.equals("Mstr")) {
-                    spn_child3=itemC3;
+                    spn_child3 = itemC3;
                     Toast.makeText(parent.getContext(), "Selected:child3 " + itemC3, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_child3=itemC3;
+                } else {
+                    spn_child3 = itemC3;
                     Toast.makeText(parent.getContext(), "Selected:child3 " + itemC3, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        child_sp4=(Spinner)findViewById(R.id.spinner_child4);
+        child_sp4 = (Spinner) findViewById(R.id.spinner_child4);
         List<String> listC4 = new ArrayList<String>();
         listC4.add("Mstr");
         listC4.add("Miss");
@@ -668,19 +706,20 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemC4 = parent.getItemAtPosition(position).toString();
                 if (itemC4.equals("Mstr")) {
-                    spn_child4=itemC4;
+                    spn_child4 = itemC4;
                     Toast.makeText(parent.getContext(), "Selected:child4 " + itemC4, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_child4=itemC4;
+                } else {
+                    spn_child4 = itemC4;
                     Toast.makeText(parent.getContext(), "Selected:child4 " + itemC4, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        child_sp5=(Spinner)findViewById(R.id.spinner_child5);
+        child_sp5 = (Spinner) findViewById(R.id.spinner_child5);
         List<String> listC5 = new ArrayList<String>();
         listC5.add("Mstr");
         listC5.add("Miss");
@@ -696,19 +735,20 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemC5 = parent.getItemAtPosition(position).toString();
                 if (itemC5.equals("Mstr")) {
-                    spn_child5=itemC5;
+                    spn_child5 = itemC5;
                     Toast.makeText(parent.getContext(), "Selected:child5 " + itemC5, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_child5=itemC5;
+                } else {
+                    spn_child5 = itemC5;
                     Toast.makeText(parent.getContext(), "Selected:child5 " + itemC5, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        child_sp6=(Spinner)findViewById(R.id.spinner_child6);
+        child_sp6 = (Spinner) findViewById(R.id.spinner_child6);
         List<String> listC6 = new ArrayList<String>();
         listC6.add("Mstr");
         listC6.add("Miss");
@@ -724,19 +764,20 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemC6 = parent.getItemAtPosition(position).toString();
                 if (itemC6.equals("Mstr")) {
-                    spn_child6=itemC6;
+                    spn_child6 = itemC6;
                     Toast.makeText(parent.getContext(), "Selected:child6 " + itemC6, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_child6=itemC6;
+                } else {
+                    spn_child6 = itemC6;
                     Toast.makeText(parent.getContext(), "Selected:child6 " + itemC6, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
-        child_sp7=(Spinner)findViewById(R.id.spinner_child7);
+        child_sp7 = (Spinner) findViewById(R.id.spinner_child7);
         List<String> listC7 = new ArrayList<String>();
         listC7.add("Mstr");
         listC7.add("Miss");
@@ -752,20 +793,21 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemC7 = parent.getItemAtPosition(position).toString();
                 if (itemC7.equals("Mstr")) {
-                    spn_child7=itemC7;
+                    spn_child7 = itemC7;
                     Toast.makeText(parent.getContext(), "Selected:child7 " + itemC7, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_child7=itemC7;
+                } else {
+                    spn_child7 = itemC7;
                     Toast.makeText(parent.getContext(), "Selected:child7 " + itemC7, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
 
-        child_sp8=(Spinner)findViewById(R.id.spinner_child8);
+        child_sp8 = (Spinner) findViewById(R.id.spinner_child8);
         List<String> listC8 = new ArrayList<String>();
         listC8.add("Mstr");
         listC8.add("Miss");
@@ -781,21 +823,23 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemC8 = parent.getItemAtPosition(position).toString();
                 if (itemC8.equals("Mstr")) {
-                    spn_child8=itemC8;
+                    spn_child8 = itemC8;
                     Toast.makeText(parent.getContext(), "Selected:child8 " + itemC8, Toast.LENGTH_SHORT).show();
-                } else{
+                } else {
                     Toast.makeText(parent.getContext(), "Selected:child8 " + itemC8, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
     }
+
     private void infants_sappier() {
 
-        infant_sp1=(Spinner)findViewById(R.id.spinner_infants1);
+        infant_sp1 = (Spinner) findViewById(R.id.spinner_infants1);
         List<String> listI1 = new ArrayList<String>();
         listI1.add("Mstr");
         listI1.add("Miss");
@@ -811,18 +855,19 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemI1 = parent.getItemAtPosition(position).toString();
                 if (itemI1.equals("Mstr")) {
-                    spn_infant1=itemI1;
+                    spn_infant1 = itemI1;
                     Toast.makeText(parent.getContext(), "Selected:infant1 " + itemI1, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_infant1=itemI1;
+                } else {
+                    spn_infant1 = itemI1;
                     Toast.makeText(parent.getContext(), "Selected:infants1 " + itemI1, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        infant_sp2=(Spinner)findViewById(R.id.spinner_infants2);
+        infant_sp2 = (Spinner) findViewById(R.id.spinner_infants2);
         List<String> listI2 = new ArrayList<String>();
         listI2.add("Mstr");
         listI2.add("Miss");
@@ -838,18 +883,19 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemI2 = parent.getItemAtPosition(position).toString();
                 if (itemI2.equals("Mstr")) {
-                    spn_infant2=itemI2;
+                    spn_infant2 = itemI2;
                     Toast.makeText(parent.getContext(), "Selected:infant2 " + itemI2, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_infant2=itemI2;
+                } else {
+                    spn_infant2 = itemI2;
                     Toast.makeText(parent.getContext(), "Selected:infant2 " + itemI2, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        infant_sp3=(Spinner)findViewById(R.id.spinner_infants3);
+        infant_sp3 = (Spinner) findViewById(R.id.spinner_infants3);
         List<String> listI3 = new ArrayList<String>();
         listI3.add("Mstr");
         listI3.add("Miss");
@@ -865,18 +911,19 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemI3 = parent.getItemAtPosition(position).toString();
                 if (itemI3.equals("Mstr")) {
-                    spn_infant3=itemI3;
+                    spn_infant3 = itemI3;
                     Toast.makeText(parent.getContext(), "Selected:infatns3 " + itemI3, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_infant3=itemI3;
+                } else {
+                    spn_infant3 = itemI3;
                     Toast.makeText(parent.getContext(), "Selected:infants3 " + itemI3, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        infant_sp4=(Spinner)findViewById(R.id.spinner_infants4);
+        infant_sp4 = (Spinner) findViewById(R.id.spinner_infants4);
         List<String> listI4 = new ArrayList<String>();
         listI4.add("Mstr");
         listI4.add("Miss");
@@ -892,13 +939,14 @@ Button contin_booking;
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemI4 = parent.getItemAtPosition(position).toString();
                 if (itemI4.equals("Mstr")) {
-                    spn_infant4=itemI4;
+                    spn_infant4 = itemI4;
                     Toast.makeText(parent.getContext(), "Selected:infant4 " + itemI4, Toast.LENGTH_SHORT).show();
-                } else{
-                    spn_infant4=itemI4;
+                } else {
+                    spn_infant4 = itemI4;
                     Toast.makeText(parent.getContext(), "Selected:infant4 " + itemI4, Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -906,10 +954,10 @@ Button contin_booking;
     }
 
     private void infantsdob() {
-        infant_DOB1=(TextView)findViewById(R.id.infants1_lastname);
-        infant_DOB2=(TextView)findViewById(R.id.infants2_lastname);
-        infant_DOB3=(TextView)findViewById(R.id.infants3_lastname);
-        infant_DOB4=(TextView)findViewById(R.id.infants4_lastname);
+        infant_DOB1 = (TextView) findViewById(R.id.infants1_lastname);
+        infant_DOB2 = (TextView) findViewById(R.id.infants2_lastname);
+        infant_DOB3 = (TextView) findViewById(R.id.infants3_lastname);
+        infant_DOB4 = (TextView) findViewById(R.id.infants4_lastname);
 
         infant_DOB1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -918,10 +966,10 @@ Button contin_booking;
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this,android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear+1)
+                        String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1)
                                 + "/" + String.valueOf(year);
                         infant_DOB1.setText(date);
                     }
@@ -937,10 +985,10 @@ Button contin_booking;
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this,android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear+1)
+                        String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1)
                                 + "/" + String.valueOf(year);
                         infant_DOB2.setText(date);
                     }
@@ -957,10 +1005,10 @@ Button contin_booking;
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this,android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear+1)
+                        String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1)
                                 + "/" + String.valueOf(year);
                         infant_DOB3.setText(date);
                     }
@@ -977,10 +1025,10 @@ Button contin_booking;
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this,android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear+1)
+                        String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1)
                                 + "/" + String.valueOf(year);
                         infant_DOB4.setText(date);
                     }
@@ -990,4 +1038,63 @@ Button contin_booking;
             }
         });
     }
-}
+
+    public void applyForCoupon(View view) {
+        String value;
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        Log.i(TAG, "Inside applyForCoupon method");
+        String URL = "https://www.farehawker.com/api/coupon_code.php?coupon_code=" + couponCode.getText();
+        JSONObject jsonObject = new JSONObject();
+// prepare the Request
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URL,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        Log.d("my_res",response.toString());
+
+                        String coupon_res = response.toString();
+                        try {
+                            Log.i(TAG,"Inside on Response");
+                            Log.i(TAG,response.get("value").toString());
+                            int my_amount = Integer.parseInt(response.get("value").toString());
+                            Log.i("my_amount", String.valueOf(my_amount));
+                            String value = response.get("value").toString();
+                            //value is discount amount from Total fare
+                            //Suppose value is equals to 9
+                            //Total is 100
+                            //Then fare after discount=total-value;
+                          //  int amount = Integer.parseInt(TotalFare.getText().toString());
+                            if (response.toString().equals("null")) {
+
+                                Toast.makeText(getApplicationContext(),"invalid coupon",Toast.LENGTH_SHORT).show();
+
+
+                            }else {
+                                TotalFare.setText(String.valueOf(Integer.parseInt(TotalFare.getText().toString()) - my_amount));
+
+                                Log.d("my_minus", String.valueOf(TotalFare));
+
+                            }
+                        }
+                        catch (JSONException je)
+                        {
+
+                        }
+                        // check the Response Code
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i(TAG, error.toString());
+            }
+        });
+        requestQueue.add(jsonRequest);
+    }//End of method applyForCoupon
+
+}//End of Class PassengerDetails
+
+
+

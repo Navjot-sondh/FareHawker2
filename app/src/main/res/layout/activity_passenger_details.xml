@@ -996,11 +996,14 @@
                 android:layout_gravity="center_horizontal"
                 />
             <EditText
+                android:inputType="phone"
+                android:maxLength="10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="MOBILE NUMBER"
                 />
             <EditText
+                android:inputType="textEmailAddress"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:hint="EMAIL ID"/>
@@ -1010,12 +1013,14 @@
                 android:weightSum="1"
                 >
             <EditText
+                android:id="@+id/couponCode"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Have a coupon Code"
                 android:layout_weight="0.7"
                 android:layout_marginRight="10dp"/>
             <Button
+                android:onClick="applyForCoupon"
                 android:background="#007aff"
                 android:layout_weight="0.3"
                 android:layout_width="0dp"
@@ -1076,6 +1081,7 @@
                 android:layout_marginBottom="15sp"
                 android:layout_height="2dp"/>
             <TextView
+                android:id="@+id/TotalFare"
                 android:layout_gravity="center_horizontal"
                 android:textSize="25dp"
                 android:textColor="#fc5119"

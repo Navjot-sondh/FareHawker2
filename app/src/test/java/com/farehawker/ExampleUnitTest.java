@@ -1,4 +1,4 @@
-package com.example.gajendrasharma.farehawker;
+package com.farehawker;
 
 import org.junit.Test;
 

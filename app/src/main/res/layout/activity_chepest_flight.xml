@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.gajendrasharma.farehawker.ChepestFlightActivity">
+    tools:context="com.farehawker.ChepestFlightActivity">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/idRecyclerviewnew_lList"
         android:layout_width="match_parent"
