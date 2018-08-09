@@ -56,12 +56,13 @@ public class OnewayFareruleaActivity extends AppCompatActivity {
     TextView term_condition;
     TextView text_onward,text_dest;
     Button continue_booking;
-
+    String airlineCode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oneway_farerulea);
         Intent intent= getIntent();
+        airlineCode=intent.getStringExtra("airlineCode");
         orign = intent.getStringExtra("originv");
         dest = intent.getStringExtra("destinav");
         endip = intent.getStringExtra("enduserip");
@@ -109,6 +110,7 @@ public class OnewayFareruleaActivity extends AppCompatActivity {
     @Override
     public void onClick(View v) {
         Intent inn=new Intent(OnewayFareruleaActivity.this,PassengerDetails.class);
+        inn.putExtra("airlineCode",airlineCode);
         inn.putExtra("originv",orign);
         inn.putExtra("destinav",dest);
         inn.putExtra("enduserip",endip);
@@ -348,4 +350,4 @@ public class OnewayFareruleaActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-}
+}//OnewayFareruleaActivity class

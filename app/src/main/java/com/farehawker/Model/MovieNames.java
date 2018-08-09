@@ -3,7 +3,7 @@ package com.farehawker.Model;
 import java.util.ArrayList;
 
 /**
- * Created by Gajendra Sharma on 05-03-2018.
+ * Created by FareHawker.com on 05-03-2018.
  */
 
 public class MovieNames {

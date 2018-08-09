@@ -3,25 +3,16 @@ package com.farehawker;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.os.FileObserver;
-import android.provider.ContactsContract;
-import android.renderscript.Sampler;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,35 +23,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.RetryPolicy;
-import com.android.volley.ServerError;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.HttpHeaderParser;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import android.view.Gravity;
 
 public class FlightbookingActivity extends AppCompatActivity
 {
@@ -134,8 +101,8 @@ public class FlightbookingActivity extends AppCompatActivity
         text_tocountry=(TextView)findViewById(R.id.text_tocountry);
 
         //get intent from DestinationsearchActivity
-            AirportcodeTO = getIntent().getStringExtra("airport_codedestination");
-            citynameTO = getIntent().getStringExtra("citynamedestination");
+        AirportcodeTO = getIntent().getStringExtra("airport_codedestination");
+        citynameTO = getIntent().getStringExtra("citynamedestination");
         countryTO=getIntent().getStringExtra("Countrydes");
         //get intent from Searchactivity
         AirportcodeFROM = getIntent().getStringExtra("airport_code");

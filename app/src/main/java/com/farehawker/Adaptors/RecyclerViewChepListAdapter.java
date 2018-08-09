@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 /**
- * Created by Gajendra Sharma on 27-02-2018.
+ * Created by FareHawker.com on 27-02-2018.
  */
 
 public class RecyclerViewChepListAdapter extends RecyclerView.Adapter<RecyclerViewChepListAdapter.ryceryViewHolder>{

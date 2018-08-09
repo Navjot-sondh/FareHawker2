@@ -996,6 +996,7 @@
                 android:layout_gravity="center_horizontal"
                 />
             <EditText
+
                 android:inputType="phone"
                 android:maxLength="10"
                 android:layout_width="match_parent"

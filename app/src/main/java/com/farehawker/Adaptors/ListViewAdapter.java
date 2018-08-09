@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gajendra Sharma on 05-03-2018.
+ * Created by FareHawker.com on 05-03-2018.
  */
 
 public class ListViewAdapter extends BaseAdapter implements Filterable {

@@ -1,7 +1,7 @@
 package com.farehawker.Model;
 
 /**
- * Created by Gajendra Sharma on 27-02-2018.
+ * Created by FareHawker.com on 27-02-2018.
  */
 
 public class OfferModel {

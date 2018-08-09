@@ -22,7 +22,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChepestFlightActivity extends AppCompatActivity {
+public class ChepestFlightActivity extends AppCompatActivity
+{
     private List<OfferModel> grceryList = new ArrayList<OfferModel>();
     private RecyclerView ceryRecyclerView;
     private static final String urlvertical="https://demo0977760.mockable.io/bestoffers";
@@ -80,7 +81,8 @@ public class ChepestFlightActivity extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(stringRequest);
     }
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         if (item.getItemId()==android.R.id.home);
         finish();
         return super.onOptionsItemSelected(item);

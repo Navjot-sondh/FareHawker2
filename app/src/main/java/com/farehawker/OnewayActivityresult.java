@@ -32,7 +32,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnewayActivityresult extends AppCompatActivity implements ClickListener {
+public class OnewayActivityresult extends AppCompatActivity implements ClickListener
+{
+    String airlineCode;
     String TAG ="OnewayActivityresult";
     private RecyclerView mRecyclerView;
     private OnewayAdaptor mAdapter;
@@ -42,7 +44,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
     Spinner spfiltr;
     String item;
     String EndUserIp="216.10.251.69";
-    String TokenId="03787cd1-fc5a-4131-8a23-4752a7ae0cb2";
+    String TokenId="6b5972e1-ccef-4cc3-8c9b-3662294ee11c";
     String traceid;
     String originacc_one,destinationacc_one,adultacc_one,childacc_one,infantacc_one,cabinacc_one,depdateacc_one,returndateacc_one;
     public static final String JSON_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
@@ -142,7 +144,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
             //first object
             JSONObject jsonobjectt = new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId","03787cd1-fc5a-4131-8a23-4752a7ae0cb2");
+            jsonobjectt.put("TokenId","6b5972e1-ccef-4cc3-8c9b-3662294ee11c");
             jsonobjectt.put("AdultCount", String.valueOf(ad));
             jsonobjectt.put("ChildCount", String.valueOf(ch));
             jsonobjectt.put("InfantCount", String.valueOf(inf));
@@ -238,6 +240,8 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
                                     JSONObject airlineobje = sagmentobj.getJSONObject("Airline");
                                     onewayset.setAirlinename(airlineobje.getString("AirlineName"));
                                     onewayset.setFlightcode(airlineobje.getString("AirlineCode"));
+                                    airlineCode=airlineobje.getString("AirlineCode");
+                                    Log.i("airlineCode",airlineCode);
                                     onewayset.setFlightnumber(airlineobje.getString("FlightNumber"));
                                     JSONObject originobject = sagmentobj.getJSONObject("Origin");
                                     //JSONObject destinationobj = sagmentobj.getJSONObject("Destination");
@@ -295,6 +299,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
         String resultindex=onewaymodel.getResultindex();
         Toast.makeText(getApplicationContext(),"color chenge"+resultindex,Toast.LENGTH_SHORT).show();
         Intent in=new Intent(OnewayActivityresult.this,OnewayFareruleaActivity.class);
+         in.putExtra("airlineCode",airlineCode);
          in.putExtra("originv",originacc_one);
          in.putExtra("destinav",destinationacc_one);
          in.putExtra("enduserip",EndUserIp);

@@ -34,6 +34,7 @@ import java.util.List;
 public class PassengerDetails extends AppCompatActivity
 {
     EditText couponCode;
+    static int couponValidity=1;
     String TAG = "PassengerDetails";
     TextView TotalFare;
     static int status = 0;
@@ -83,6 +84,8 @@ public class PassengerDetails extends AppCompatActivity
         adultonep = intent.getStringExtra("adultone");
         childonep = intent.getStringExtra("childone");
         infantsonep = intent.getStringExtra("infantsone");
+        Log.i("airlineCode",intent.getStringExtra("airlineCode"));
+        String airlineCode=intent.getStringExtra("airlineCode");
         //totalFare=intent.getStringExtra("totalFare");
         // Log.i(TAG,totalFare);
         TotalFare.setText(intent.getStringExtra("totalFare"));
@@ -311,14 +314,16 @@ public class PassengerDetails extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent inr = new Intent(PassengerDetails.this, Reviewdetails.class);
+                //inr.putExtra();
                 inr.putExtra("adF", Adultstring);
                 inr.putExtra("adL", AdLstring);
+                //inr.putExtra("")
                 Toast.makeText(getApplicationContext(), Adultstr + adl, Toast.LENGTH_SHORT).show();
                 startActivity(inr);
             }
         });
     }
-
+    //invoked when user
     public void makeGstVisible(View view) {
         if (status == 0) {
             gstLinearLayout.setVisibility(View.VISIBLE);
@@ -1040,6 +1045,7 @@ public class PassengerDetails extends AppCompatActivity
     }
 
     public void applyForCoupon(View view) {
+
         String value;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         Log.i(TAG, "Inside applyForCoupon method");
@@ -1063,24 +1069,35 @@ public class PassengerDetails extends AppCompatActivity
                             String value = response.get("value").toString();
                             //value is discount amount from Total fare
                             //Suppose value is equals to 9
-                            //Total is 100
-                            //Then fare after discount=total-value;
+                            //Total fare is 100
+                            //Then fare after discount is =total-value;
                           //  int amount = Integer.parseInt(TotalFare.getText().toString());
-                            if (response.toString().equals("null")) {
 
-                                Toast.makeText(getApplicationContext(),"invalid coupon",Toast.LENGTH_SHORT).show();
+                            if (response.get("value").toString()==null)
+                            {
+                                Log.i("Response1073",response.get("value").toString());
+                                Toast.makeText(PassengerDetails.this,"invalid coupon",Toast.LENGTH_SHORT).show();
 
-
-                            }else {
-                                TotalFare.setText(String.valueOf(Integer.parseInt(TotalFare.getText().toString()) - my_amount));
-
-                                Log.d("my_minus", String.valueOf(TotalFare));
-
+                            }
+                            else
+                                {
+                                    if(couponValidity==1)
+                                    {
+                                        TotalFare.setText(String.valueOf(Integer.parseInt(TotalFare.getText().toString()) - my_amount));
+                                        //set couponValidity to zero.Since Coupon has been used once it not valid now
+                                        couponValidity=0;
+                                        Toast.makeText(PassengerDetails.this,"Coupon Code is valid for once",Toast.LENGTH_SHORT);
+                                        Log.d("my_minus", String.valueOf(TotalFare));
+                                    }
+                                    else
+                                    {
+                                        Toast.makeText(PassengerDetails.this,"Coupon expired",Toast.LENGTH_LONG).show();
+                                    }
                             }
                         }
                         catch (JSONException je)
                         {
-
+                            Log.i(TAG,je.toString());
                         }
                         // check the Response Code
 
@@ -1089,6 +1106,7 @@ public class PassengerDetails extends AppCompatActivity
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG, error.toString());
+                Toast.makeText(PassengerDetails.this,"Invalid Coupon Code",Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(jsonRequest);

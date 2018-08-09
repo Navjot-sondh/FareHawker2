@@ -4,10 +4,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -27,7 +25,6 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.farehawker.Adaptors.AppController;
 import com.farehawker.Adaptors.Farerules_roundReturn;
 import com.farehawker.Adaptors.Farerules_roundorigin;
 import com.farehawker.Adaptors.MyBaseActivity;
@@ -42,11 +39,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.SQLRecoverableException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FarerulesActivity extends MyBaseActivity {
+public class FarerulesActivity extends MyBaseActivity
+{
     TextView basefare, texas,otherch_text, publisfare;
     TextView terms_cond;
     CheckBox checkBox;
@@ -71,7 +68,8 @@ public class FarerulesActivity extends MyBaseActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farerules);
         originrecyclerview = (RecyclerView) findViewById(R.id.origin_recyclerview);
@@ -133,7 +131,7 @@ public class FarerulesActivity extends MyBaseActivity {
             objfareF.put("ResultIndex", resultindex_oneward);
             final String results = objfareF.toString();
             Log.wtf("relusty",results);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, JSON_URL,objfareF,new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,JSON_URL,objfareF,new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 progressDialog.dismiss();
