@@ -36,7 +36,7 @@ public class Search extends AppCompatActivity
             //Flight Details json Object
             JSONObject jsonObject = new JSONObject();
             /*
-            * {"EndUserIp":"216.10.251.69","TokenId":"6b5972e1-ccef-4cc3-8c9b-3662294ee11c","AdultCount":"1","ChildCount":0,"InfantCount":0,"DirectFlight":"false","OneStopFlight":"false","JourneyType":"1","PreferredAirlines":null,"Segments":[{"Origin":"DEL","Destination":"VNS","FlightCabinClass":"2","PreferredDepartureTime":"2018-08-08T00:00:00"}]}    */
+            * {"EndUserIp":"216.10.251.69","TokenId":"f7ec3d1c-61c5-4e88-b4b4-fa4676a8fed1","AdultCount":"1","ChildCount":0,"InfantCount":0,"DirectFlight":"false","OneStopFlight":"false","JourneyType":"1","PreferredAirlines":null,"Segments":[{"Origin":"DEL","Destination":"VNS","FlightCabinClass":"2","PreferredDepartureTime":"2018-08-08T00:00:00"}]}    */
             JSONArray jsonArray=new JSONArray();
             jsonObject.put("Origin", "DEL");
             jsonObject.put("Destination", "VNS");
@@ -47,7 +47,7 @@ public class Search extends AppCompatActivity
             //Second Object
             JSONObject jsonObject1 = new JSONObject();
             jsonObject1.put("EndUserIp","216.10.251.69");
-            jsonObject1.put("TokenId","6b5972e1-ccef-4cc3-8c9b-3662294ee11c");
+            jsonObject1.put("TokenId","f7ec3d1c-61c5-4e88-b4b4-fa4676a8fed1");
             jsonObject1.put("AdultCount","1");
             jsonObject1.put("ChildCount","0");
             jsonObject1.put("InfantCount","0");

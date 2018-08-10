@@ -39,7 +39,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OnewayFareruleaActivity extends AppCompatActivity {
+public class OnewayFareruleaActivity extends AppCompatActivity
+{
   String orign,dest,endip,token,resultind,traceidone,adultone,childone,infantsone;
     int base_o_oneway, tex_o_oneway,otherc_oneway,total_o_oneway;
   public static final String FARE_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Farequote/";

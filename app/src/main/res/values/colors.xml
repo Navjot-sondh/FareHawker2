@@ -8,5 +8,6 @@
 <color name="whitecolor">#ffffff</color>
 <color name="bgBottomNavigation">#ebebeb</color>
     <color name="black">#464343</color>
+<color name="marginColor">#A9A9A9</color>
 
 </resources>

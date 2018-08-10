@@ -314,7 +314,11 @@ public class PassengerDetails extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent inr = new Intent(PassengerDetails.this, Reviewdetails.class);
+                checkData();
                 //inr.putExtra();
+                inr.putExtra("adultCount",adultonep);
+                inr.putExtra("childCount",childonep);
+                inr.putExtra("infantCount",infantsonep);
                 inr.putExtra("adF", Adultstring);
                 inr.putExtra("adL", AdLstring);
                 //inr.putExtra("")
@@ -1111,6 +1115,25 @@ public class PassengerDetails extends AppCompatActivity
         });
         requestQueue.add(jsonRequest);
     }//End of method applyForCoupon
+    public void checkData()
+    {
+        if(isEmpty(text_adultF1))
+        {
+
+            Toast.makeText(PassengerDetails.this,"Please Fill your First Name",Toast.LENGTH_LONG);
+        }
+        else
+        {
+            Toast.makeText(PassengerDetails.this,"Name not blank",Toast.LENGTH_LONG);
+
+        }
+
+    }
+    public boolean isEmpty(TextView editText)
+    {
+        String string =editText.getText().toString();
+        return string.isEmpty();
+    }
 
 }//End of Class PassengerDetails
 

@@ -63,6 +63,7 @@
                             android:layout_weight="10"
                             android:layout_height="wrap_content" />
                         <EditText
+                            android:digits="abcdefghijklmnopquvrstwxyzABCDEFGHIJKLMNOPQUVRSTWXYZ"
                             android:id="@+id/adult_firstname"
                             android:hint="Fist name"
                             android:layout_weight="40"
@@ -996,7 +997,6 @@
                 android:layout_gravity="center_horizontal"
                 />
             <EditText
-
                 android:inputType="phone"
                 android:maxLength="10"
                 android:layout_width="match_parent"

@@ -1,95 +1,1476 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.farehawker.Reviewdetails"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.farehawker.Reviewdetails">
+    >
+    <TextView
+        android:textSize="24sp"
+        android:background="@color/farehawkercolor"
+        android:textColor="@color/whitecolor"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Review Booking"
+        />
+    <View
+        android:background="@color/marginColor"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"/>
+    <TextView
+        android:textSize="24sp"
+        android:textColor="@color/farehawkercolor"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Traveller(s) Details"/>
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+
+        android:id="@+id/travellersDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:weightSum="3"
+        android:id="@+id/row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <TextView
-            android:textColor="@color/farehawkercolor"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Name"/>
+        <TextView
+            android:text="Type"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <TextView android:gravity="center_horizontal"
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Flight Details"
-            />
-        <view
-            android:layout_height="2dp"
-            android:layout_width="match_parent"
-            />
-        <LinearLayout
-            android:weightSum="4"
-            android:id="@+id/flightLinearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:text="DOB"/>
 
-            >
-            <ImageView
-                android:layout_weight="1"
+    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/adult1"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:text="sdsd"
-                android:src="@drawable/indigo"
-                />
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:weightSum="2">
+                android:layout_height="match_parent">
                 <TextView
                     android:layout_weight="1"
+                    android:id="@+id/adultTitle1"
+                    android:gravity="center_horizontal"
+                    android:text="Mr."
+
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:text="Indigo"/>
+                    android:layout_height="match_parent" />
                 <TextView
+                    android:id="@+id/adultName1"
                     android:layout_weight="1"
+                    android:gravity="center_horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:text="9W-304"/>
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+
+                    android:id="@+id/adultLastname1"
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
             </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
+
+            <TextView
+
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:orientation="vertical"
-                android:weightSum="2">
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:text="20:00"/>
-                <TextView
-                    android:layout_weight="1"
-                    android:text="DEL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"/>
-            </LinearLayout>
-            <LinearLayout
-
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:layout_width="0dp"
-                android:weightSum="2"
-
-                android:orientation="vertical">
-                <TextView
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="01:30"/>
-                <TextView
-                    android:text="BOM"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+                android:text="Adult"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/adult2"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/adultTitle2"
+                    android:gravity="center_horizontal"
+                    android:text="Mr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/adultName2"
+
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:id="@+id/adultLastname2"
+
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
             </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Adult"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/adult3"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/adultTitle3"
+                    android:gravity="center_horizontal"
+                    android:text="Mr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/adultName3"
+
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:id="@+id/adultLastname3"
+
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Adult"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/adult4"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/adultTitle4"
+                    android:gravity="center_horizontal"
+                    android:text="Mr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/adultName4"
+
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:id="@+id/adultLastname4"
+
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Adult"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/adult5"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/adultTitle5"
+                    android:gravity="center_horizontal"
+                    android:text="Mr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/adultName5"
+
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:id="@+id/adultLastname5"
+
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Adult"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/adult6"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/adultTitle6"
+                    android:gravity="center_horizontal"
+                    android:text="Mr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/adultName6"
+
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:id="@+id/adultLastname6"
+
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Adult"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/adult7"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/adultTitle7"
+                    android:gravity="center_horizontal"
+                    android:text="Mr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/adultName7"
+
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:id="@+id/adultLastname7"
+
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Adult"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/adult8"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/adultTitle8"
+                    android:gravity="center_horizontal"
+                    android:text="Mr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/adultName8"
+
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:id="@+id/adultLastname8"
+
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Adult"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/adult9"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/adultTitle9"
+                    android:gravity="center_horizontal"
+                    android:text="Mr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:id="@+id/adultName9"
+
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:id="@+id/adultLastname9"
+
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Adult"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/child1"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/childtitle1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Child"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/child2"
+
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Child"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/child3"
+
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Child"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/child4"
+
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Child"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/child5"
+
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Child"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/child6"
+
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Child"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/child7"
+
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Child"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/child8"
+
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Child"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+
+            android:id="@+id/infant1"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/infanttitle1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="infant"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/infant2"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="infant"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/infant3"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="infant"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/infant4"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="infant"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/infant5"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="infant"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/infant6"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="infant"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/infant7"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="infant"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/infant8"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="infant"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/infant9"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:weightSum="3"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_weight="1.5"
+                android:weightSum="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:text="Mstr."
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+                <TextView
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Navjot"/>
+                <TextView
+                    android:layout_weight="1"
+                    android:text="Singh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+            <TextView
+
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="infant"/>
+            <TextView
+                android:gravity="center_horizontal"
+                android:layout_weight="0.75"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/02/2018"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <TextView
+        android:textSize="24sp"
+        android:textColor="@color/farehawkercolor"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Flight Details"/>
+    <View
+        android:background="@color/marginColor"
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        />
+    <LinearLayout
+        android:weightSum="4"
+        android:id="@+id/flightLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        >
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:text="sdsd"
+            android:src="@drawable/indigo"
+            />
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="2">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="Indigo"/>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="9W-304"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="20:00"/>
+            <TextView
+                android:layout_weight="1"
+                android:text="DEL"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"/>
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:weightSum="2"
+
+            android:orientation="vertical">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01:30"/>
+            <TextView
+                android:text="BOM"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+    </LinearLayout>
     <Button
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/farehawkercolor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,5 +1478,7 @@
         android:gravity="center"
         android:text="Make Payment"
         />
+
 </LinearLayout>
 
+</ScrollView>
