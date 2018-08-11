@@ -110,19 +110,27 @@ public class OnewayFareruleaActivity extends AppCompatActivity
   continue_booking.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        Intent inn=new Intent(OnewayFareruleaActivity.this,PassengerDetails.class);
-        inn.putExtra("airlineCode",airlineCode);
-        inn.putExtra("originv",orign);
-        inn.putExtra("destinav",dest);
-        inn.putExtra("enduserip",endip);
-        inn.putExtra("tokenid",token);
-        inn.putExtra("resultindex",resultind);
-        inn.putExtra("traceid",traceidone);
-        inn.putExtra("adultone",adultone);
-        inn.putExtra("childone",childone);
-        inn.putExtra("infantsone",infantsone);
-        inn.putExtra("totalFare",publish_oneway.getText().toString());//"totalFare",publish_oneway
-           startActivity(inn);
+        if(!oneway_checkbox.isChecked())
+        {
+            Toast.makeText(OnewayFareruleaActivity.this,"Please accept Terms and Conditions",Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Intent inn=new Intent(OnewayFareruleaActivity.this,PassengerDetails.class);
+            inn.putExtra("airlineCode",airlineCode);
+            inn.putExtra("originv",orign);
+            inn.putExtra("destinav",dest);
+            inn.putExtra("enduserip",endip);
+            inn.putExtra("tokenid",token);
+            inn.putExtra("resultindex",resultind);
+            inn.putExtra("traceid",traceidone);
+            inn.putExtra("adultone",adultone);
+            inn.putExtra("childone",childone);
+            inn.putExtra("infantsone",infantsone);
+            inn.putExtra("totalFare",publish_oneway.getText().toString());//"totalFare",publish_oneway
+            startActivity(inn);
+
+        }
           }
           });
      }

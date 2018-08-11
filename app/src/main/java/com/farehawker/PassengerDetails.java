@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.basgeekball.awesomevalidation.AwesomeValidation;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,15 +32,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class PassengerDetails extends AppCompatActivity
-{
+import static android.text.TextUtils.isEmpty;
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
+
+
+public class PassengerDetails extends AppCompatActivity {
     EditText couponCode;
-    static int couponValidity=1;
+
+    static int couponValidity = 1;
     String TAG = "PassengerDetails";
     TextView TotalFare;
+    private String edit_txt;
+
     static int status = 0;
     String orignp, destp, endipp, tokenp, resultindp, traceidonep, adultonep, childonep, infantsonep;
     //int child_count,infant_count;
+
     LinearLayout childmain, infantsmain;
     LinearLayout Linear_adult1, Linear_adult2, Linear_adult3, Linear_adult4, Linear_adult5, Linear_adult6, Linear_adult7, Linear_adult8, Linear_adult9;
     LinearLayout linear_child1, linear_child2, linear_child3, linear_child4, linear_child5, linear_child6, linear_child7, linear_child8;
@@ -51,11 +59,12 @@ public class PassengerDetails extends AppCompatActivity
     String item, itemA2, itemA3, itemA4, itemA5, itemA6, itemA7, itemA8, itemA9, itemC1, itemC2, itemC3, itemC4, itemC5, itemC6, itemC7, itemC8, itemI1, itemI2, itemI3, itemI4;
     TextView adultcount, childcount, infantscount;
 
-    TextView text_adultF1, text_adultF2, text_adultF3, text_adultF4, text_adultF5, text_adultF6, text_adultF7, text_adultF8, text_adultF9,
-            text_adultL1, text_adultL2, text_adultL3, text_adultL4, text_adultL5, text_adultL6, text_adultL7, text_adultL8, text_adultL9,
+    TextView adultOneFirstName, adultSecondFirstName, adultThirdFirstName, adultFourthFirstName, adultFifthFirstName, adultSixthFirstName, adultSeventhFirstName, adultEigthFirstName, adultNinethFirstName,
+            adultOneLastName, adultSecondLastName, adultThirdLastName, adultFourthLastName, adultFifthLastName, adultSixthLastName, adultSeventhLastName, adultEigthLastName, adultNinethLastName,
             text_childF1, text_childF2, text_childF3, text_childF4, text_childF5, text_childF6, text_childF7, text_childF8,
             text_childL1, text_childL2, text_childL3, text_childL4, text_childL5, text_childL6, text_childL7, text_childL8,
             text_infantF1, text_infantF2, text_infantF3, text_infantF4;
+    TextView mobileNumber, emailId;
     String Adultstring, Adultstring2, Adultstring3, Adultstring4, Adultstring5, Adultstring6, Adultstring7, Adultstring8, Adultstring9,
             childstring, childstring2, childstring3, childstring4, childstring5, childstring6, childstring7, childstring8,
             infantstring, infantstring2, infantstring3, infantstring4, AdLstring, AdLstring2, AdLstring3, AdLstring4,
@@ -66,7 +75,9 @@ public class PassengerDetails extends AppCompatActivity
     String spn_adult1, spn_adult2, spn_adult3, spn_adult4, spn_adult5, spn_adult6, spn_adult7, spn_adult8, spn_adult9,
             spn_child1, spn_child2, spn_child3, spn_child4, spn_child5, spn_child6, spn_child7, spn_child8,
             spn_infant1, spn_infant2, spn_infant3, spn_infant4;
-    Button contin_booking;
+    Button continueBookingButton;
+    String airlineCode;
+    AwesomeValidation awesomeValidation = new AwesomeValidation(BASIC);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,11 +95,10 @@ public class PassengerDetails extends AppCompatActivity
         adultonep = intent.getStringExtra("adultone");
         childonep = intent.getStringExtra("childone");
         infantsonep = intent.getStringExtra("infantsone");
-        Log.i("airlineCode",intent.getStringExtra("airlineCode"));
-        String airlineCode=intent.getStringExtra("airlineCode");
-        //totalFare=intent.getStringExtra("totalFare");
-        // Log.i(TAG,totalFare);
         TotalFare.setText(intent.getStringExtra("totalFare"));
+        airlineCode = intent.getStringExtra("airlineCode");
+        awesomeValidation.validate();
+
         Toast.makeText(PassengerDetails.this, "mag" + orignp + "\n" + destp + "\n" + endipp + "\n" + tokenp + "\n" + resultindp + "\n" + traceidonep + "\n" + adultonep + "\n" + childonep + "\n" + infantsonep, Toast.LENGTH_LONG).show();
         infantsdob();
         Spinner_count();
@@ -102,26 +112,25 @@ public class PassengerDetails extends AppCompatActivity
         infantscount.setText(infantsonep);
         childmain = (LinearLayout) findViewById(R.id.childmain_main);
         infantsmain = (LinearLayout) findViewById(R.id.infants_main);
+        adultOneFirstName = (TextView) findViewById(R.id.adult_firstname);
+        adultSecondFirstName = (TextView) findViewById(R.id.adult2_firstname);
+        adultThirdFirstName = (TextView) findViewById(R.id.adult3_firstname);
+        adultFourthFirstName = (TextView) findViewById(R.id.adult4_firstname);
+        adultFifthFirstName = (TextView) findViewById(R.id.adult5_firstname);
+        adultSixthFirstName = (TextView) findViewById(R.id.adult6_firstname);
+        adultSeventhFirstName = (TextView) findViewById(R.id.adult7_firstname);
+        adultEigthFirstName = (TextView) findViewById(R.id.adult8_firstname);
+        adultNinethFirstName = (TextView) findViewById(R.id.adult9_firstname);
 
-        text_adultF1 = (TextView) findViewById(R.id.adult_firstname);
-        text_adultF2 = (TextView) findViewById(R.id.adult2_firstname);
-        text_adultF3 = (TextView) findViewById(R.id.adult3_firstname);
-        text_adultF4 = (TextView) findViewById(R.id.adult4_firstname);
-        text_adultF5 = (TextView) findViewById(R.id.adult5_firstname);
-        text_adultF6 = (TextView) findViewById(R.id.adult6_firstname);
-        text_adultF7 = (TextView) findViewById(R.id.adult7_firstname);
-        text_adultF8 = (TextView) findViewById(R.id.adult8_firstname);
-        text_adultF9 = (TextView) findViewById(R.id.adult9_firstname);
-
-        text_adultL1 = (TextView) findViewById(R.id.adult_lastname);
-        text_adultL2 = (TextView) findViewById(R.id.adult2_lastname);
-        text_adultL3 = (TextView) findViewById(R.id.adult3_lastname);
-        text_adultL4 = (TextView) findViewById(R.id.adult4_lastname);
-        text_adultL5 = (TextView) findViewById(R.id.adult5_lastname);
-        text_adultL6 = (TextView) findViewById(R.id.adult6_lastname);
-        text_adultL7 = (TextView) findViewById(R.id.adult7_lastname);
-        text_adultL8 = (TextView) findViewById(R.id.adult8_lastname);
-        text_adultL9 = (TextView) findViewById(R.id.adult9_lastname);
+        adultOneLastName = (TextView) findViewById(R.id.adult_lastname);
+        adultSecondLastName = (TextView) findViewById(R.id.adult2_lastname);
+        adultThirdLastName = (TextView) findViewById(R.id.adult3_lastname);
+        adultFourthLastName = (TextView) findViewById(R.id.adult4_lastname);
+        adultFifthLastName = (TextView) findViewById(R.id.adult5_lastname);
+        adultSixthLastName = (TextView) findViewById(R.id.adult6_lastname);
+        adultSeventhLastName = (TextView) findViewById(R.id.adult7_lastname);
+        adultEigthLastName = (TextView) findViewById(R.id.adult8_lastname);
+        adultNinethLastName = (TextView) findViewById(R.id.adult9_lastname);
 
         text_childF1 = (TextView) findViewById(R.id.child1_firstname);
         text_childF2 = (TextView) findViewById(R.id.child2_firstname);
@@ -171,6 +180,8 @@ public class PassengerDetails extends AppCompatActivity
         Linear_infant3 = (LinearLayout) findViewById(R.id.linear_infants3);
         Linear_infant4 = (LinearLayout) findViewById(R.id.linear_infants4);
 
+        mobileNumber = findViewById(R.id.mobileNumber);
+        emailId = findViewById(R.id.emailId);
         gstLinearLayout = (LinearLayout) findViewById(R.id.gstLinearLayout);
         if (childonep.equals("0")) {
             childmain.setVisibility(View.GONE);
@@ -180,7 +191,8 @@ public class PassengerDetails extends AppCompatActivity
         }
 
         //for adult
-        if (adultonep.equals("1")) {
+        if (adultonep.equals("1"))
+        {
             Linear_adult2.setVisibility(View.GONE);
             Linear_adult3.setVisibility(View.GONE);
             Linear_adult4.setVisibility(View.GONE);
@@ -191,7 +203,8 @@ public class PassengerDetails extends AppCompatActivity
             Linear_adult9.setVisibility(View.GONE);
 
         }
-        if (adultonep.equals("2")) {
+        if (adultonep.equals("2"))
+        {
             Linear_adult3.setVisibility(View.GONE);
             Linear_adult4.setVisibility(View.GONE);
             Linear_adult5.setVisibility(View.GONE);
@@ -303,30 +316,152 @@ public class PassengerDetails extends AppCompatActivity
             Linear_infant4.setVisibility(View.GONE);
         }
         if (infantsonep.equals("3")) {
-
             Linear_infant4.setVisibility(View.GONE);
         }
 
-        final String Adultstr = text_adultF1.getText().toString();
-        final String adl = text_adultL1.getText().toString();
-        contin_booking = (Button) findViewById(R.id.contineee);
-        contin_booking.setOnClickListener(new View.OnClickListener() {
+        final String Adultstr = adultOneFirstName.getText().toString();
+        final String adl = adultOneLastName.getText().toString();
+        continueBookingButton = (Button) findViewById(R.id.contineee);
+        continueBookingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent inr = new Intent(PassengerDetails.this, Reviewdetails.class);
-                checkData();
-                //inr.putExtra();
-                inr.putExtra("adultCount",adultonep);
-                inr.putExtra("childCount",childonep);
-                inr.putExtra("infantCount",infantsonep);
+
+                inr.putExtra("adultCount", adultonep);
+                inr.putExtra("childCount", childonep);
+                inr.putExtra("infantCount", infantsonep);
+
+                inr.putExtra("adultOneFirstName", adultOneFirstName.getText().toString());
+                inr.putExtra("adultSecondFirstName", adultSecondFirstName.getText().toString());
+                inr.putExtra("adultThirdFirstName", adultThirdFirstName.getText().toString());
+                inr.putExtra("adultFourthFirstName", adultThirdFirstName.getText().toString());
+                inr.putExtra("adultFifthFirstName", adultThirdFirstName.getText().toString());
+                inr.putExtra("adultSixthFirstName", adultThirdFirstName.getText().toString());
+                inr.putExtra("adultSeventhFirstName", adultThirdFirstName.getText().toString());
+                inr.putExtra("adultEigthFirstName", adultThirdFirstName.getText().toString());
+                inr.putExtra("adultNinethFirstName", adultThirdFirstName.getText().toString());
+
+                inr.putExtra("adultOneLastName", adultOneLastName.getText().toString());
+                inr.putExtra("adultTwoLastName", adultOneLastName.getText().toString());
+                inr.putExtra("adultThirdLastName", adultOneLastName.getText().toString());
+                inr.putExtra("adultFourthLastName", adultOneLastName.getText().toString());
+                inr.putExtra("adultFifthLastName", adultOneLastName.getText().toString());
+                inr.putExtra("adultSixthLastName", adultOneLastName.getText().toString());
+                inr.putExtra("adultSeventhLastName", adultOneLastName.getText().toString());
+                inr.putExtra("adultEigthLastName", adultOneLastName.getText().toString());
+                inr.putExtra("adultNinethLastName", adultOneLastName.getText().toString());
+
+                inr.putExtra("childOneFirstName",childOneFirstName.getText().toString());
+
                 inr.putExtra("adF", Adultstring);
                 inr.putExtra("adL", AdLstring);
-                //inr.putExtra("")
+                if (isEmpty(adultOneFirstName.getText().toString())) {
+                    adultOneFirstName.setError("Please enter your first name");
+                    adultOneFirstName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultOneLastName.getText().toString())) {
+                    adultOneLastName.setError("Please enter your Last name");
+                    adultOneLastName.requestFocus();
+                    return;
+                }
+
+                if (isEmpty(adultSecondFirstName.getText().toString()) && adultcount.getText().toString().equals("2")) {
+                    adultSecondFirstName.setError("Please enter your first name");
+                    adultSecondFirstName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultSecondLastName.getText().toString()) && adultcount.getText().toString().equals("2")) {
+                    adultSecondLastName.setError("Please enter your Last name");
+                    adultSecondLastName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultThirdFirstName.getText().toString()) && adultcount.getText().toString().equals("3")) {
+                    adultThirdFirstName.setError("Please enter your first name");
+                    adultThirdFirstName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultThirdLastName.getText().toString()) && adultcount.getText().toString().equals("3")) {
+                    adultThirdLastName.setError("Please enter your Last name");
+                    adultThirdLastName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultFourthFirstName.getText().toString()) && adultcount.getText().toString().equals("4")) {
+                    adultFourthFirstName.setError("Please enter your first name");
+                    adultFourthFirstName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultFourthLastName.getText().toString()) && adultcount.getText().toString().equals("4")) {
+                    adultFourthLastName.setError("Please enter your Last name");
+                    adultFourthLastName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultFifthFirstName.getText().toString()) && adultcount.getText().toString().equals("5")) {
+                    adultFifthFirstName.setError("Please enter First Name");
+                    adultFifthFirstName.requestFocus();
+                }
+                if (isEmpty(adultFifthLastName.getText().toString()) && adultcount.getText().toString().equals("5")) {
+                    adultFifthLastName.setError("Please enter your Last name");
+                    adultFifthLastName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultSixthFirstName.getText().toString()) && adultcount.getText().toString().equals("6")) {
+                    adultSixthFirstName.setError("Please enter your first name");
+                    adultSixthFirstName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultSixthLastName.getText().toString()) && adultcount.getText().toString().equals("6")) {
+                    adultSixthLastName.setError("Please enter your Last name");
+                    adultSixthLastName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultSeventhFirstName.getText().toString()) && adultcount.getText().toString().equals("7")) {
+                    adultSeventhFirstName.setError("Please enter your first name");
+                    adultSeventhFirstName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultSeventhLastName.getText().toString()) && adultcount.getText().toString().equals("7")) {
+                    adultSeventhLastName.setError("Please enter your Last name");
+                    adultSeventhLastName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultEigthFirstName.getText().toString()) && adultcount.getText().toString().equals("8")) {
+                    adultEigthFirstName.setError("Please enter your first name");
+                    adultEigthFirstName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultEigthLastName.getText().toString()) && adultcount.getText().toString().equals("8")) {
+                    adultEigthLastName.setError("Please enter your Last name");
+                    adultEigthLastName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultNinethFirstName.getText().toString()) && adultcount.getText().toString().equals("9")) {
+                    adultNinethFirstName.setError("Please enter your first name");
+                    adultNinethFirstName.requestFocus();
+                    return;
+                }
+                if (isEmpty(adultNinethLastName.getText().toString()) && adultcount.getText().toString().equals("9")) {
+                    adultNinethLastName.setError("Please enter your Last name");
+                    adultNinethLastName.requestFocus();
+                    return;
+                }
+                if (isEmpty(mobileNumber.getText().toString())) {
+                    mobileNumber.setError("Please enter your mobile number");
+                    mobileNumber.requestFocus();
+                    return;
+                }
+                if (isEmpty(emailId.getText().toString())) {
+                    emailId.setError("Please enter your email id");
+                    emailId.requestFocus();
+                    return;
+                }
                 Toast.makeText(getApplicationContext(), Adultstr + adl, Toast.LENGTH_SHORT).show();
                 startActivity(inr);
             }
         });
     }
+
     //invoked when user
     public void makeGstVisible(View view) {
         if (status == 0) {
@@ -1062,12 +1197,12 @@ public class PassengerDetails extends AppCompatActivity
                     @Override
                     public void onResponse(JSONObject response) {
 
-                        Log.d("my_res",response.toString());
+                        Log.d("my_res", response.toString());
 
                         String coupon_res = response.toString();
                         try {
-                            Log.i(TAG,"Inside on Response");
-                            Log.i(TAG,response.get("value").toString());
+                            Log.i(TAG, "Inside on Response");
+                            Log.i(TAG, response.get("value").toString());
                             int my_amount = Integer.parseInt(response.get("value").toString());
                             Log.i("my_amount", String.valueOf(my_amount));
                             String value = response.get("value").toString();
@@ -1075,33 +1210,25 @@ public class PassengerDetails extends AppCompatActivity
                             //Suppose value is equals to 9
                             //Total fare is 100
                             //Then fare after discount is =total-value;
-                          //  int amount = Integer.parseInt(TotalFare.getText().toString());
+                            //  int amount = Integer.parseInt(TotalFare.getText().toString());
 
-                            if (response.get("value").toString()==null)
-                            {
-                                Log.i("Response1073",response.get("value").toString());
-                                Toast.makeText(PassengerDetails.this,"invalid coupon",Toast.LENGTH_SHORT).show();
+                            if (response.get("value").toString() == null) {
+                                Log.i("Response1073", response.get("value").toString());
+                                Toast.makeText(PassengerDetails.this, "invalid coupon", Toast.LENGTH_SHORT).show();
 
+                            } else {
+                                if (couponValidity == 1) {
+                                    TotalFare.setText(String.valueOf(Integer.parseInt(TotalFare.getText().toString()) - my_amount));
+                                    //set couponValidity to zero.Since Coupon has been used once it not valid now
+                                    couponValidity = 0;
+                                    Toast.makeText(PassengerDetails.this, "Coupon Code is valid for once", Toast.LENGTH_SHORT);
+                                    Log.d("my_minus", String.valueOf(TotalFare));
+                                } else {
+                                    Toast.makeText(PassengerDetails.this, "You have already used this coupon!", Toast.LENGTH_LONG).show();
+                                }
                             }
-                            else
-                                {
-                                    if(couponValidity==1)
-                                    {
-                                        TotalFare.setText(String.valueOf(Integer.parseInt(TotalFare.getText().toString()) - my_amount));
-                                        //set couponValidity to zero.Since Coupon has been used once it not valid now
-                                        couponValidity=0;
-                                        Toast.makeText(PassengerDetails.this,"Coupon Code is valid for once",Toast.LENGTH_SHORT);
-                                        Log.d("my_minus", String.valueOf(TotalFare));
-                                    }
-                                    else
-                                    {
-                                        Toast.makeText(PassengerDetails.this,"Coupon expired",Toast.LENGTH_LONG).show();
-                                    }
-                            }
-                        }
-                        catch (JSONException je)
-                        {
-                            Log.i(TAG,je.toString());
+                        } catch (JSONException je) {
+                            Log.i(TAG, je.toString());
                         }
                         // check the Response Code
 
@@ -1110,31 +1237,28 @@ public class PassengerDetails extends AppCompatActivity
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG, error.toString());
-                Toast.makeText(PassengerDetails.this,"Invalid Coupon Code",Toast.LENGTH_LONG).show();
+                Toast.makeText(PassengerDetails.this, "Invalid Coupon Code", Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(jsonRequest);
     }//End of method applyForCoupon
-    public void checkData()
-    {
-        if(isEmpty(text_adultF1))
-        {
 
-            Toast.makeText(PassengerDetails.this,"Please Fill your First Name",Toast.LENGTH_LONG);
+    public void checkData() {
+
+        //edit_txt = adultOneFirstName.getText().toString();
+        if (isEmpty(adultOneFirstName.getText().toString())) {
+
+            adultOneFirstName.setError("Please enter your first name");
+            adultOneFirstName.requestFocus();
+            return;
         }
-        else
-        {
-            Toast.makeText(PassengerDetails.this,"Name not blank",Toast.LENGTH_LONG);
-
+        if (isEmpty(adultOneLastName.getText().toString())) {
+            adultOneLastName.setError("Please enter your Last name");
+            adultOneFirstName.requestFocus();
+            return;
         }
 
-    }
-    public boolean isEmpty(TextView editText)
-    {
-        String string =editText.getText().toString();
-        return string.isEmpty();
-    }
-
+    }//End of checkData method
 }//End of Class PassengerDetails
 
 

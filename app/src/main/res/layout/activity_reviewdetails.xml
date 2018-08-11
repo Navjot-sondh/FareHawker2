@@ -43,7 +43,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:weightSum="3"
+        android:weightSum="2"
         android:id="@+id/row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -58,11 +58,6 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
-        <TextView android:gravity="center_horizontal"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DOB"/>
 
     </LinearLayout>
         <LinearLayout
@@ -111,12 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Adult"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -165,12 +155,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Adult"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -219,12 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Adult"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -273,12 +253,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Adult"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -327,12 +302,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Adult"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -381,12 +351,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Adult"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -435,12 +400,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Adult"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -489,12 +449,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Adult"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/adult9"
@@ -542,12 +497,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Adult"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/child1"
@@ -591,12 +541,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Child"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/child2"
@@ -640,12 +585,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Child"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/child3"
@@ -689,12 +629,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Child"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/child4"
@@ -738,12 +673,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Child"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/child5"
@@ -787,12 +717,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Child"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/child6"
@@ -836,12 +761,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Child"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/child7"
@@ -885,12 +805,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Child"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/child8"
@@ -934,12 +849,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Child"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
 
@@ -984,12 +894,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="infant"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/infant2"
@@ -1032,12 +937,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="infant"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/infant3"
@@ -1080,12 +980,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="infant"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/infant4"
@@ -1128,12 +1023,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="infant"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/infant5"
@@ -1176,12 +1066,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="infant"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/infant6"
@@ -1224,12 +1109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="infant"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/infant7"
@@ -1272,12 +1152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="infant"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/infant8"
@@ -1320,12 +1195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="infant"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/infant9"
@@ -1370,12 +1240,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="infant"/>
-            <TextView
-                android:gravity="center_horizontal"
-                android:layout_weight="0.75"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="01/02/2018"/>
+
         </LinearLayout>
 
 

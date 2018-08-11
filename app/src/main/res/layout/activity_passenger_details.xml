@@ -997,6 +997,7 @@
                 android:layout_gravity="center_horizontal"
                 />
             <EditText
+                android:id="@+id/mobileNumber"
                 android:inputType="phone"
                 android:maxLength="10"
                 android:layout_width="match_parent"
@@ -1004,6 +1005,7 @@
                 android:hint="MOBILE NUMBER"
                 />
             <EditText
+                android:id="@+id/emailId"
                 android:inputType="textEmailAddress"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
