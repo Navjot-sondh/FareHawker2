@@ -52,7 +52,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
     LinearLayout Linvisible;
     TextView Book_btn;
     String EndUserIp_Round="216.10.251.69";
-    String TokenId_Round="5d6ec9d7-9737-4e37-a885-084ea58e7e18";
+    String TokenId_Round="87623387-0224-4827-81b1-9804d14300d1";
     String originacc,destinationacc,adultacc,childacc,infantacc,cabinacc,depdateacc,returndateacc;
     String urlJsonroundtrip ="http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
     @Override
@@ -75,6 +75,8 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
                 in.putExtra("traceid",traceid);
                 in.putExtra("enduserip_round",EndUserIp_Round);
                 in.putExtra("tokenid_round",TokenId_Round);
+                in.putExtra("depart",depdateacc);
+
                 startActivity(in);
             }
         });
@@ -91,6 +93,17 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
         recyclerViewright =(RecyclerView) findViewById(R.id.recyclerview_roundtripreturn);
         RecyclerView.LayoutManager rightLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewright.setLayoutManager(rightLayoutManager);
+
+        //get the data from bundle
+        Intent intent= getIntent();
+        originacc = intent.getStringExtra("originround");
+        destinationacc = intent.getStringExtra("destinationround");
+        adultacc = intent.getStringExtra("adultround");
+        childacc = intent.getStringExtra("childround");
+        infantacc = intent.getStringExtra("infantsround");
+        cabinacc = intent.getStringExtra("cabinclass");
+        depdateacc = intent.getStringExtra("departureround");
+        returndateacc = intent.getStringExtra("returnround");
 
         makeJsonObjectRequest();
         onward_spin=(Spinner)findViewById(R.id.originfilter);
@@ -158,37 +171,28 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        //get the data from bundle
-            Intent intent= getIntent();
-            originacc = intent.getStringExtra("originround");
-            destinationacc = intent.getStringExtra("destinationround");
-            adultacc = intent.getStringExtra("adultround");
-            childacc = intent.getStringExtra("childround");
-            infantacc = intent.getStringExtra("infantsround");
-            cabinacc = intent.getStringExtra("cabinclass");
-            depdateacc = intent.getStringExtra("departureround");
-            returndateacc = intent.getStringExtra("returnround");
           Toast.makeText(RoundTripActivity.this, "mag" + originacc+"\n" + destinationacc+"\n" + adultacc +"\n"+ childacc+"\n" + infantacc+"\n" + cabinacc+"\n" + depdateacc +"\n"+ returndateacc, Toast.LENGTH_LONG).show();
     }
     private void makeJsonObjectRequest() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading please wait ...");
         progressDialog.show();
-        try {
+        try
+        {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             //start bottom
             JSONObject objsagment = new JSONObject();
-            objsagment.put("Origin","DEL");
-            objsagment.put("Destination","BOM");
-            objsagment.put("FlightCabinClass","1");
-            objsagment.put( "PreferredArrivalTime","2018-08-06T00:00:00");
-            objsagment.put( "PreferredDepartureTime","2018-08-06T00:00:00");
+            objsagment.put("Origin",originacc);
+            objsagment.put("Destination",destinationacc);
+            objsagment.put("FlightCabinClass",cabinacc);
+            objsagment.put( "PreferredArrivalTime",depdateacc+"T00:00:00");
+            objsagment.put( "PreferredDepartureTime",depdateacc+"T00:00:00");
             JSONObject objectsegment2=new JSONObject();
-            objectsegment2.put("Origin", "BOM");
-            objectsegment2.put("Destination","DEL");
-            objectsegment2.put("FlightCabinClass","1");
-            objectsegment2.put("PreferredDepartureTime","2018-08-08T00:00:00");
-            objectsegment2.put( "PreferredArrivalTime","2018-08-08T00:00:00");
+            objectsegment2.put("Origin", destinationacc);
+            objectsegment2.put("Destination",originacc);
+            objectsegment2.put("FlightCabinClass",cabinacc);
+            objectsegment2.put("PreferredDepartureTime",returndateacc+"T00:00:00");
+            objectsegment2.put( "PreferredArrivalTime",returndateacc+"T00:00:00");
             //bottom array
             JSONArray Arraysagment = new JSONArray();
             Arraysagment.put(objsagment);
@@ -196,7 +200,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             //first object
             JSONObject jsonobjectt= new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId","5d6ec9d7-9737-4e37-a885-084ea58e7e18");
+            jsonobjectt.put("TokenId","21c25630-3a13-46a0-9fe8-3ee0f17bb915");
             jsonobjectt.put("AdultCount", "1");
             jsonobjectt.put("ChildCount", "0");
             jsonobjectt.put("InfantCount", "0");
@@ -216,7 +220,6 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
 
                     Log.i("LOG_VOLLEY", response.toString());
                         try {
-
                             JSONObject firstobjs=response.getJSONObject("Response");
                             traceid=firstobjs.getString("TraceId");
                             JSONArray resultarray=firstobjs.getJSONArray("Results");
@@ -224,7 +227,6 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
 
                             for(int i=0; i<resulsetarray.length();i++)
                             {
-
                                 RoundtripModelclass roundset = new RoundtripModelclass();
                                 JSONObject jobjet = resulsetarray.getJSONObject(i);
                                 Log.i(TAG,jobjet.toString());

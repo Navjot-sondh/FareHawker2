@@ -980,6 +980,216 @@
                         android:layout_marginBottom="15sp"
                         android:layout_height="2dp"/>
                 </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_infants5"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Infants 5" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5sp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spinner_infants5"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="10"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants5_firstname"
+                            android:hint="Infant name"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants5_lastname"
+                            android:hint="DOB"
+                            android:focusable="false"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_infants6"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Infants 6" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5sp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spinner_infants6"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="10"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants6_firstname"
+                            android:hint="Infant name"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants6_lastname"
+                            android:hint="DOB"
+                            android:focusable="false"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_infants7"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Infants 7" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5sp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spinner_infants7"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="10"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants7_firstname"
+                            android:hint="Infant name"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants7_lastname"
+                            android:hint="DOB"
+                            android:focusable="false"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_infants8"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Infants 8" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5sp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spinner_infants8"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="10"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants8_firstname"
+                            android:hint="Infant name"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants8_lastname"
+                            android:hint="DOB"
+                            android:focusable="false"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/linear_infants9"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Infants 9" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5sp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content">
+                        <Spinner
+                            android:id="@+id/spinner_infants9"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="10"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants9_firstname"
+                            android:hint="Infant name"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <EditText
+                            android:id="@+id/infants9_lastname"
+                            android:hint="DOB"
+                            android:focusable="false"
+                            android:layout_weight="40"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:background="@color/bgBottomNavigation"
+                        android:layout_marginTop="5sp"
+                        android:layout_marginBottom="15sp"
+                        android:layout_height="2dp"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 

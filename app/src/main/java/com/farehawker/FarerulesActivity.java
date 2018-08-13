@@ -78,6 +78,7 @@ public class FarerulesActivity extends MyBaseActivity
         originrecyclerview.setLayoutManager(orignLayoutManager);
         originlist = new ArrayList<>();
         Intent intent= getIntent();
+        Log.i("depDate",intent.getStringExtra("depart"));
         resultindex_oneward = intent.getStringExtra("result_oneward");
         resultindex_return=intent.getStringExtra("result_return");
         tracidR=intent.getStringExtra("traceid");

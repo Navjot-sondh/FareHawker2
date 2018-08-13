@@ -33,12 +33,11 @@ public class FlightbookingActivity extends AppCompatActivity
 {
     //Tag used in Log
     String TAG="FlightbookingActivity";
-
-
     LinearLayout linear_departure, linear_return;
     TextView text_departure, text_return;
     TextView text_onewaytrip,text_roundtrip;
     TextView text_fromlocation,text_fromcountrycity,text_fromcountry, text_tolocation,text_tocountrycity,text_tocountry;
+
     private int mday, yday;
     private int mmonth, ymonth;
     private int myear, yyear,n,c,i;
@@ -59,7 +58,8 @@ public class FlightbookingActivity extends AppCompatActivity
     String AirportcodeTO,citynameTO,countryTO,AirportcodeFROM,citynameFROM,countrynameFROm;
     int returwrong,departurewron;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flightbooking);
         linear_departure = (LinearLayout) findViewById(R.id.linearlayout_departure);
@@ -115,7 +115,7 @@ public class FlightbookingActivity extends AppCompatActivity
         text_tocountry.setText(countryTO);
         text_fromlocation.setText(AirportcodeFROM);
         text_fromcountrycity.setText(citynameFROM);
-       text_fromcountry.setText(countrynameFROm);
+        text_fromcountry.setText(countrynameFROm);
         //Receive  the intent to the searchactivity
             String returnair=getIntent().getStringExtra("duprair");
             String returncity=getIntent().getStringExtra("duprcity");
@@ -207,11 +207,11 @@ public class FlightbookingActivity extends AppCompatActivity
                 //for country name exchange
                 String text_swapfromcity = text_fromcountrycity.getText().toString();
                 String text_swaptocity = text_tocountrycity.getText().toString();
-//                //for city name exchange
+                //for city name exchange
                 String text_swapfromcountry  = text_fromcountry.getText().toString();
                 String text_swaptocountry= text_tocountry.getText().toString();
-               text_fromlocation.setText(text_swapto);
-               text_tolocation.setText(text_swapfrom);
+                text_fromlocation.setText(text_swapto);
+                text_tolocation.setText(text_swapfrom);
                 text_fromcountrycity.setText(text_swaptocity);
                 text_tocountrycity.setText(text_swapfromcity);
                 text_fromcountry.setText(text_swaptocountry);
@@ -291,7 +291,8 @@ public class FlightbookingActivity extends AppCompatActivity
         child_btnplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((count_child < 9)&&(count_child+count<9)) {
+                if ((count_child < 9)&&(count_child+count<9))
+                {
                     count_child = count_child + 1;
                     child = String.valueOf(count_child);
                     text_Child.setText(child);
