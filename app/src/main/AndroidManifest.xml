@@ -43,6 +43,7 @@
         <activity android:name=".PassengerDetails" />
         <activity android:name=".Reviewdetails" />
         <activity android:name=".International_Roundtrip"></activity>
+        <activity android:name=".PassengerDetailsR"></activity>
     </application>
 
 </manifest>

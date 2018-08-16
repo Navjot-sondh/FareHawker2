@@ -105,7 +105,7 @@ public class FarerulesActivity extends MyBaseActivity
         final String retrunR=intent.getStringExtra("returnround");
 
         Toast.makeText(FarerulesActivity.this,"resultindex is "+resultindex_oneward+"\n"+resultindex_return+"\n"+adultR+"\n"+childR+"\n"+infantsR+"\n"+tracidR,Toast.LENGTH_SHORT).show();
-        //Log.wtf("resultindex",resultindex_oneward);
+
         returnRecyclerview = (RecyclerView) findViewById(R.id.return_recyclerview);
         returnRecyclerview.setHasFixedSize(true);
         returnLayoutmanager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -120,17 +120,6 @@ public class FarerulesActivity extends MyBaseActivity
         checkBox = (CheckBox) findViewById(R.id.chkWindows);
         terms_cond = (TextView) findViewById(R.id.term_condi);
         continueBooking=findViewById(R.id.roundTripContinueB);
-//        checkBox.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view)
-//            {
-//                if(!checkBox.isChecked())
-//                {
-//                    Toast.makeText(FarerulesActivity.this,"Please accept the terms and condition",Toast.LENGTH_LONG).show();
-//                }
-//
-//            }
-//        });
         continueBooking.setOnClickListener(new View.OnClickListener()
         {
             public void onClick(View view)
@@ -141,7 +130,7 @@ public class FarerulesActivity extends MyBaseActivity
                 }
                 else
                 {
-                    Intent intent = new Intent(FarerulesActivity.this,PassengerDetails.class);
+                    Intent intent = new Intent(getApplicationContext(),PassengerDetailsR.class);
                     intent.putExtra("intentId","RoundTrip");
                     intent.putExtra("originround", originR);
                     intent.putExtra("destinationround", destinationR);
@@ -151,6 +140,10 @@ public class FarerulesActivity extends MyBaseActivity
                     intent.putExtra("cabinclass", cabinR);
                     intent.putExtra("departureround", departureR);
                     intent.putExtra("returnround", retrunR);
+                    //Flight Details
+                    intent.putExtra("enduserip_round",enduserip_round);
+                    intent.putExtra("tokenid_round",tokenid_round);
+
 
                     startActivity(intent);
                 }

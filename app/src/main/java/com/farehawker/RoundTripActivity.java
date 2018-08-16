@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoundTripActivity extends AppCompatActivity implements ClickListener, LeftclickI {
+
+    Intent intent;
     String TAG = "RoundTripActivity";
     Spinner onward_spin, return_spin;
     private List<RoundtripModelclass> roundleftlist;
@@ -52,7 +54,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
     LinearLayout Linvisible;
     TextView Book_btn;
     String EndUserIp_Round = "216.10.251.69";
-    String TokenId_Round = "1d16d673-a645-478e-9cb2-f93240c1a1a5";
+    String TokenId_Round = "11c18fd5-1bfc-483b-a3a6-a5ff7c9ba9cb";
     String originacc, destinationacc, adultacc, childacc, infantacc, cabinacc, depdateacc, returndateacc;
     String urlJsonroundtrip = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
 
@@ -206,7 +208,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             //first object
             JSONObject jsonobjectt = new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId", "1d16d673-a645-478e-9cb2-f93240c1a1a5");
+            jsonobjectt.put("TokenId", "11c18fd5-1bfc-483b-a3a6-a5ff7c9ba9cb");
             jsonobjectt.put("AdultCount", adultacc);
             jsonobjectt.put("ChildCount", childacc);
             jsonobjectt.put("InfantCount", infantacc);
@@ -371,13 +373,27 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             e.printStackTrace();
         }
     }
-
+//Right side flight clicked
     @Override
     public void itemClicked(View view, int position) {
         RoundtripreturnModelclass rightmodel = (RoundtripreturnModelclass) rightadaptor.getItem(position);
         Linvisible.setVisibility(View.VISIBLE);
         finalprice = Integer.parseInt(rightmodel.getReturnroundtriponewayprice());
         resutlt_retunr = rightmodel.getResultindex_return();
+        String flightCode=rightmodel.getReturnflightcodearrive();
+        String flightName=rightmodel.getReturnflightnamearrive();
+        String flightNumber=rightmodel.getReturnflightnumberarrive();
+        String flightSeatLeft=rightmodel.getReturnroundtriponewayseatsleft();
+        String flightDepartureTime=rightmodel.getReturnflightonewaydiparturetime();
+        String flightPrice=rightmodel.getReturnroundtriponewayprice();
+        int flightImage=rightmodel.getImgagerountreturn();
+        intent.putExtra("flightCodeR",flightCode);
+        intent.putExtra("flightNameR",flightName);
+        intent.putExtra("flightNumberR",flightNumber);
+        intent.putExtra("flightSeatLeftR",flightSeatLeft);
+        intent.putExtra("flightDepartureTimeR",flightDepartureTime);
+        intent.putExtra("flightPriceR",flightPrice);
+
 
         int f = finalprice + priceid;
         text_price.setText(String.valueOf(f));
@@ -388,9 +404,26 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
     }
 
     @Override
-    public void leftitemclick(View view, int position) {
+    public void leftitemclick(View view, int position)
+    {
         Linvisible.setVisibility(View.VISIBLE);
         RoundtripModelclass leftmodel = (RoundtripModelclass) leftadaptor.getItem(position);
+
+        String flightCode=leftmodel.getCodeneway();
+        String flightName=leftmodel.getFlightnameneway();
+        String flightNumber=leftmodel.getNumberneway();
+        String flightSeatLeft=leftmodel.getSeatsleftneway();
+        String flightDepartureTime=leftmodel.getDiparturetimeneway();
+        String flightPrice=leftmodel.getPriceneway();
+        String flightArrivalTime=leftmodel.getOrigintimeneway();
+        intent.putExtra("ArrivalTime",flightArrivalTime);
+        intent.putExtra("flightCode",flightCode);
+        intent.putExtra("flightName",flightName);
+        intent.putExtra("flightNumber",flightNumber);
+        intent.putExtra("flightSeatLeft",flightSeatLeft);
+        intent.putExtra("flightDeparture",flightDepartureTime);
+        intent.putExtra("flightPrice",flightPrice);
+
         priceid = Integer.parseInt(leftmodel.getPriceneway());
         result_oneward = leftmodel.getResultindex_oneward();
         int b = finalprice + priceid;

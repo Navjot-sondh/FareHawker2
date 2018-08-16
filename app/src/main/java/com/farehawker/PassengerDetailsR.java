@@ -94,8 +94,8 @@ public class PassengerDetailsR extends AppCompatActivity
 
         orignp = intent.getStringExtra("originround");
         destp = intent.getStringExtra("destinationround");
-        endipp = intent.getStringExtra("enduserip");
-        tokenp = intent.getStringExtra("tokenid");
+        endipp = intent.getStringExtra("enduserip_round");
+        tokenp = intent.getStringExtra("tokenid_round");
         resultindp = intent.getStringExtra("resultindex");
         traceidonep = intent.getStringExtra("traceid");
 

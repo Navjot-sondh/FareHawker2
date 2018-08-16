@@ -44,7 +44,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
     Spinner spfiltr;
     String item;
     String EndUserIp="216.10.251.69";
-    String TokenId="1d16d673-a645-478e-9cb2-f93240c1a1a5";
+    String TokenId="11c18fd5-1bfc-483b-a3a6-a5ff7c9ba9cb";
     String traceid;
     String originacc_one,destinationacc_one,adultacc_one,childacc_one,infantacc_one,cabinacc_one,depdateacc_one,returndateacc_one;
     public static final String JSON_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
@@ -101,6 +101,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
 
         //get the data from bundle
         Intent intent= getIntent();
+
         originacc_one = intent.getStringExtra("originround");
         destinationacc_one = intent.getStringExtra("destinationround");
         adultacc_one = intent.getStringExtra("adultround");
@@ -109,11 +110,11 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
         cabinacc_one = intent.getStringExtra("cabinclass");
         depdateacc_one = intent.getStringExtra("departureround");
         returndateacc_one = intent.getStringExtra("returnround");
+
         text_ocode.setText(String.valueOf(originacc_one));
         text_dcode.setText(String.valueOf(destinationacc_one));
         Toast.makeText(OnewayActivityresult.this, "mag" + originacc_one+"\n" + destinationacc_one+"\n" + adultacc_one +"\n"+ childacc_one+"\n" + infantacc_one+"\n" + cabinacc_one+"\n" + depdateacc_one +"\n"+ returndateacc_one, Toast.LENGTH_LONG).show();
-
-    }
+    }//End of onCreate method
     private void sendRequest()
     {
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -144,7 +145,7 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
             //first object
             JSONObject jsonobjectt = new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId","1d16d673-a645-478e-9cb2-f93240c1a1a5");
+            jsonobjectt.put("TokenId","11c18fd5-1bfc-483b-a3a6-a5ff7c9ba9cb");
             jsonobjectt.put("AdultCount", String.valueOf(ad));
             jsonobjectt.put("ChildCount", String.valueOf(ch));
             jsonobjectt.put("InfantCount", String.valueOf(inf));
@@ -168,7 +169,8 @@ public class OnewayActivityresult extends AppCompatActivity implements ClickList
                                 JSONArray resultarray = firstobjs.getJSONArray("Results");
                                 JSONArray resulsetarray = resultarray.getJSONArray(0);
                                 Log.i(TAG,resulsetarray.toString());
-                                for (int i = 0; i < resulsetarray.length(); i++) {
+                                for (int i = 0; i < resulsetarray.length(); i++)
+                                {
                                     OnewayModelClass onewayset = new OnewayModelClass();
                                     JSONObject jobjet = resulsetarray.getJSONObject(i);
                                     onewayset.setResultindex(jobjet.getString("ResultIndex"));
