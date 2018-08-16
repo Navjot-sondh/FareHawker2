@@ -428,10 +428,11 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
         result_oneward = leftmodel.getResultindex_oneward();
         int b = finalprice + priceid;
         text_price.setText(String.valueOf(b));
-        if (finalprice > 0 && priceid > 0) {
+        if (finalprice > 0 && priceid > 0)
+        {
             Book_btn.setVisibility(View.VISIBLE);
         }
-        Toast.makeText(getApplicationContext(), "it is working " + b, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "It is working " + b, Toast.LENGTH_SHORT).show();
     }
 
 }
