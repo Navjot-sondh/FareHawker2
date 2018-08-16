@@ -8,44 +8,42 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import android.content.DialogInterface;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.farehawker.Adaptors.AppController;
-import com.farehawker.Model.OfferModel;
 import com.farehawker.Adaptors.RecyclerViewHorizontalListAdapter;
+import com.farehawker.Model.OfferModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    //Here this git testing You can delete this line.
+        implements NavigationView.OnNavigationItemSelectedListener
+{
+    //Here this git testing You can delete this Comment.
     private static final String urlhorizontal="https://demo0977760.mockable.io/bestoffers";
     private List<OfferModel> groceryListmain;
     private RecyclerView groceryRecyclerView;
@@ -57,11 +55,8 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        if (isOnline()) {
-
-
-        //do whatever you want to do
+        if (isOnline())
+        {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -256,7 +251,8 @@ public class MainActivity extends AppCompatActivity
         }
 
     }
-    private boolean isOnline() {
+    private boolean isOnline()
+    {
         // Using ConnectivityManager to check for Network Connection
         ConnectivityManager connectivityManager = (ConnectivityManager) this
                 .getSystemService(Context.CONNECTIVITY_SERVICE);

@@ -34,13 +34,9 @@ import java.util.List;
 
 import static android.text.TextUtils.isEmpty;
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
-
-
 public class PassengerDetails extends AppCompatActivity
 {
     EditText couponCode;
-
-
     static int couponValidity = 1;
     String TAG = "PassengerDetails";
     TextView TotalFare;
@@ -48,7 +44,7 @@ public class PassengerDetails extends AppCompatActivity
 
     static int status = 0;
     String orignp, destp, endipp, tokenp, resultindp, traceidonep, adultonep, childonep, infantsonep;
-    //int child_count,infant_count;
+
     LinearLayout childmain, infantsmain;
     LinearLayout Linear_adult1, Linear_adult2, Linear_adult3, Linear_adult4, Linear_adult5, Linear_adult6, Linear_adult7, Linear_adult8, Linear_adult9;
     LinearLayout linear_child1, linear_child2, linear_child3, linear_child4, linear_child5, linear_child6, linear_child7, linear_child8;
@@ -96,9 +92,11 @@ public class PassengerDetails extends AppCompatActivity
         tokenp = intent.getStringExtra("tokenid");
         resultindp = intent.getStringExtra("resultindex");
         traceidonep = intent.getStringExtra("traceid");
+
         adultonep = intent.getStringExtra("adultone");
         childonep = intent.getStringExtra("childone");
         infantsonep = intent.getStringExtra("infantsone");
+
         TotalFare.setText(intent.getStringExtra("totalFare"));
         airlineCode = intent.getStringExtra("airlineCode");
         awesomeValidation.validate();

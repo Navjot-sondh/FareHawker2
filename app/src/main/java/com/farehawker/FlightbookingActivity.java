@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,7 +47,7 @@ public class FlightbookingActivity extends AppCompatActivity
     static final int DATE_PICKER_ID = 1111;
     static final int Dialog_id = 111;
     //for count
-    int count=0;
+    int count=1;
     int count_child=0;
     int count_infants=0;
     String adult,child,infants;
@@ -171,7 +170,9 @@ public class FlightbookingActivity extends AppCompatActivity
         linearLayout_to.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   Intent iii = new Intent(FlightbookingActivity.this, DestinationSearchActivity.class);
+
+                Intent iii = new Intent(FlightbookingActivity.this, DestinationSearchActivity.class);
+
                    iii.putExtra("orair",AirportcodeFROM);
                    iii.putExtra("orcity",citynameFROM);
                    iii.putExtra("oricountry",countrynameFROm);
@@ -261,10 +262,15 @@ public class FlightbookingActivity extends AppCompatActivity
         Adult_btnplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ((count <9)&&(count+count_child<9)) {
+                if ((count <9)&&(count+count_child<9))
+                {
                     count = count +1;
                     adult = String.valueOf(count);
                     text_Adult.setText(adult);
+                }
+                else if(count==9)
+                {
+                    Toast.makeText(FlightbookingActivity.this,"Adults cannot be more than 9",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -288,7 +294,8 @@ public class FlightbookingActivity extends AppCompatActivity
             }
         });
 
-        child_btnplus.setOnClickListener(new View.OnClickListener() {
+        child_btnplus.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 if ((count_child < 9)&&(count_child+count<9))
@@ -297,6 +304,11 @@ public class FlightbookingActivity extends AppCompatActivity
                     child = String.valueOf(count_child);
                     text_Child.setText(child);
                 }
+                else if((count_child+count)>=8)
+                {
+                    Toast.makeText(FlightbookingActivity.this,"Adult and Children cannot be more than 9.",Toast.LENGTH_LONG).show();
+                }
+
             }
         });
         child_btnminus.setOnClickListener(new View.OnClickListener() {
@@ -315,6 +327,10 @@ public class FlightbookingActivity extends AppCompatActivity
                     count_infants = count_infants +1;
                     infants = String.valueOf(count_infants);
                     text_infant.setText(infants);
+                }
+                else if(count==count_infants)
+                {
+                    Toast.makeText(FlightbookingActivity.this,"Infants cannot be more than Adults",Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -2,8 +2,8 @@ package com.farehawker;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -25,7 +25,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -103,17 +102,7 @@ public class DestinationSearchActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                 String current = "";
-//                if(!s.toString().equals(current) && !s.toString().isEmpty()){
-//                    String cleanString = s.toString().replaceAll("[$,.]", "");
-//
-//                    double parsed = Double.parseDouble(cleanString);
-//                    String formated = NumberFormat.getCurrencyInstance().format((parsed/100));
-//
-//                    current = formated;
-//                    editsearchdes.setText(formated);
-//                    editsearchdes.setSelection(formated.length());
-//                }
+
 
                 // TODO Auto-generated method stub
             }

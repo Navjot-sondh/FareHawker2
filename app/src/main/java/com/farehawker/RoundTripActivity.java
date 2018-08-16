@@ -35,7 +35,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoundTripActivity extends AppCompatActivity implements ClickListener, LeftclickI {
+public class RoundTripActivity extends AppCompatActivity implements ClickListener, LeftclickI
+{
     String TAG="RoundTripActivity";
     Spinner onward_spin,return_spin;
     private List<RoundtripModelclass> roundleftlist;
@@ -52,15 +53,14 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
     LinearLayout Linvisible;
     TextView Book_btn;
     String EndUserIp_Round="216.10.251.69";
-    String TokenId_Round="87623387-0224-4827-81b1-9804d14300d1";
+    String TokenId_Round="e48f6754-0b45-493b-beee-eb37a0177224";
     String originacc,destinationacc,adultacc,childacc,infantacc,cabinacc,depdateacc,returndateacc;
     String urlJsonroundtrip ="http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round_trip);
-
-
         text_price=(TextView) findViewById(R.id.price_text);
         Book_btn=(TextView) findViewById(R.id.book_btn);
         Book_btn.setOnClickListener(new View.OnClickListener() {
@@ -81,10 +81,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             }
         });
         Linvisible=(LinearLayout)findViewById(R.id.invisible_layout);
-//        if((priceid==0)&&(finalprice==0)){
-//        }else {
-//            Book_btn.setVisibility(View.VISIBLE);
-//        }
+
         recyclerViewleft = (RecyclerView) findViewById(R.id.recyclerview_roundtriporigin);
         RecyclerView.LayoutManager leftLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewleft.setLayoutManager(leftLayoutManager);
@@ -173,13 +170,15 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
         });
           Toast.makeText(RoundTripActivity.this, "mag" + originacc+"\n" + destinationacc+"\n" + adultacc +"\n"+ childacc+"\n" + infantacc+"\n" + cabinacc+"\n" + depdateacc +"\n"+ returndateacc, Toast.LENGTH_LONG).show();
     }
-    private void makeJsonObjectRequest() {
+    private void makeJsonObjectRequest()
+    {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading please wait ...");
         progressDialog.show();
         try
         {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
+
             //start bottom
             JSONObject objsagment = new JSONObject();
             objsagment.put("Origin",originacc);
@@ -193,6 +192,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             objectsegment2.put("FlightCabinClass",cabinacc);
             objectsegment2.put("PreferredDepartureTime",returndateacc+"T00:00:00");
             objectsegment2.put( "PreferredArrivalTime",returndateacc+"T00:00:00");
+
             //bottom array
             JSONArray Arraysagment = new JSONArray();
             Arraysagment.put(objsagment);
@@ -200,10 +200,10 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             //first object
             JSONObject jsonobjectt= new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId","21c25630-3a13-46a0-9fe8-3ee0f17bb915");
-            jsonobjectt.put("AdultCount", "1");
-            jsonobjectt.put("ChildCount", "0");
-            jsonobjectt.put("InfantCount", "0");
+            jsonobjectt.put("TokenId","e48f6754-0b45-493b-beee-eb37a0177224");
+            jsonobjectt.put("AdultCount", adultacc);
+            jsonobjectt.put("ChildCount", childacc);
+            jsonobjectt.put("InfantCount", infantacc);
             jsonobjectt.put("IsDomestic", "false");
             jsonobjectt.put("DirectFlight", "false");
             jsonobjectt.put("OneStopFlight", "false");
@@ -216,7 +216,8 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, urlJsonroundtrip,jsonobjectt, new Response.Listener<JSONObject>() {
                 @Override
-                public void onResponse(JSONObject response) {
+                public void onResponse(JSONObject response)
+                {
 
                     Log.i("LOG_VOLLEY", response.toString());
                         try {
@@ -388,7 +389,8 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
        result_oneward=leftmodel.getResultindex_oneward();
         int b=finalprice+priceid;
         text_price.setText(String.valueOf(b));
-        if (finalprice>0&&priceid>0){
+        if (finalprice>0&&priceid>0)
+        {
             Book_btn.setVisibility(View.VISIBLE);
         }
         Toast.makeText(getApplicationContext(),"it is working "+b,Toast.LENGTH_SHORT).show();

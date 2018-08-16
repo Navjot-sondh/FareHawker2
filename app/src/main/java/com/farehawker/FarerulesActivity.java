@@ -118,7 +118,7 @@ public class FarerulesActivity extends MyBaseActivity
                 termoginserv();
             }
         });
-    }
+    }//End of onCreate method
     private void makevolleyrequest() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading please wait ...");
@@ -131,135 +131,132 @@ public class FarerulesActivity extends MyBaseActivity
             objfareF.put("TraceId", tracidR);
             objfareF.put("ResultIndex", resultindex_oneward);
             final String results = objfareF.toString();
-            Log.wtf("relusty",results);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,JSON_URL,objfareF,new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                progressDialog.dismiss();
-                try {
-                    JSONObject firstobjs = response.getJSONObject("Response");
-                    String responsstatus = firstobjs.getString("ResponseStatus");
-                    Log.wtf("resstatus", responsstatus);
-                    if (!responsstatus.equals("1")) {
-                        new AlertDialog.Builder(FarerulesActivity.this)
-                                .setMessage("Your session is expired please press ok")
-                                //.setPositiveButton("Yes",null)
-                                .setNeutralButton("                               OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent = new Intent(FarerulesActivity.this, FlightbookingActivity.class);
-                                        startActivity(intent);
-                                    }
-                                })
-                                .show();
+            Log.wtf("relusty", results);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, JSON_URL, objfareF, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    progressDialog.dismiss();
+                    try {
+                        JSONObject firstobjs = response.getJSONObject("Response");
+                        Log.i("Response_141", firstobjs.toString());
+                        String responsstatus = firstobjs.getString("ResponseStatus");
+                        Log.wtf("resstatus", responsstatus);
+                        if (!responsstatus.equals("1")) {
+                            new AlertDialog.Builder(FarerulesActivity.this)
+                                    .setMessage("Your session is expired please press ok")
+                                    //.setPositiveButton("Yes",null)
+                                    .setNeutralButton("                               OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent intent = new Intent(FarerulesActivity.this, FlightbookingActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    })
+                                    .show();
+                        }
+                        JSONObject resultobject = firstobjs.getJSONObject("Results");
+                        JSONObject Faresr = resultobject.getJSONObject("Fare");
+                        Double base = Double.valueOf(Faresr.getString("BaseFare"));
+                        base_o = base.intValue();
+                        Log.wtf("valuea", String.valueOf(base_o));
+                        int bs = base_o + base_r;
+                        basefare.setText(String.valueOf(bs));
+
+                        Double tex = Double.valueOf(Faresr.getString("Tax"));
+                        tex_o = tex.intValue();
+                        Log.wtf("valuev", String.valueOf(tex_o));
+                        int tx = tex_o + text_r;
+                        texas.setText(String.valueOf(tx));
+
+
+                        Double otherch = Double.valueOf(Faresr.getString("OtherCharges"));
+                        otherch_o = otherch.intValue();
+                        Log.wtf("valuev", String.valueOf(otherch_o));
+                        int othr = otherch_o + otherch_r;
+                        otherch_text.setText(String.valueOf(othr));
+                        Double total = Double.valueOf(Faresr.getString("PublishedFare"));
+                        total_o = total.intValue();
+                        int pub = total_o + total_r;
+                        Log.wtf("values", String.valueOf(total_o));
+                        publisfare.setText(String.valueOf(pub));
+                        JSONArray sagmentarr = resultobject.getJSONArray("Segments");
+                        JSONArray sagmentinnner = sagmentarr.getJSONArray(0);
+                        for (int i = 0; i < sagmentinnner.length(); i++) {
+                            Fare_originModel origindata = new Fare_originModel();
+                            JSONObject jobjet = sagmentinnner.getJSONObject(i);
+                            origindata.setCheckin_origin(jobjet.getString("Baggage"));
+                            origindata.setCabin_origin(jobjet.getString("CabinBaggage"));
+                            origindata.setOrigin_dura(jobjet.getString("Duration") + "m");
+
+                            JSONObject airline = jobjet.getJSONObject("Airline");
+                            origindata.setOfcode1(airline.getString("AirlineCode"));
+                            origindata.setO_fname1(airline.getString("AirlineName"));
+                            origindata.setOnumber1(airline.getString("FlightNumber"));
+
+                            JSONObject origin = jobjet.getJSONObject("Origin");
+                            //origindata.setOtime1(origin.getString("DepTime"));
+                            String splitdest = origin.getString("DepTime");
+                            String[] textslitdest = splitdest.split("T");
+                            String newsplitdest1 = textslitdest[0];
+                            String newsplitdest2 = textslitdest[1];
+                            String textdepar = newsplitdest2;
+                            String sub_textdepa = textdepar.substring(0, newsplitdest2.length() - 3);
+                            //this is wrong because i made mistake in xml
+                            origindata.setOtime1(sub_textdepa);
+                            JSONObject oriairport = origin.getJSONObject("Airport");
+                            origindata.setOcity1(oriairport.getString("CityName"));
+                            origindata.setOcode1(oriairport.getString("AirportCode"));
+                            origindata.setOterm(oriairport.getString("Terminal"));
+
+                            JSONObject destination = jobjet.getJSONObject("Destination");
+                            //origindata.setAtime1(destination.getString("ArrTime"));
+                            String splitarive = destination.getString("ArrTime");
+                            String[] textslitarivtim = splitarive.split("T");
+                            String newsplitarriv = textslitarivtim[0];
+                            String newsplitarriv2 = textslitarivtim[1];
+                            //substring value
+                            String textsub = newsplitarriv2;
+                            String sub_text = textsub.substring(0, newsplitarriv2.length() - 3);
+
+                            //this is wrong because i made mistake in xml
+                            origindata.setAtime1(sub_text);
+                            JSONObject desairport = destination.getJSONObject("Airport");
+                            origindata.setAcity1(desairport.getString("CityName"));
+                            origindata.setAcode1(desairport.getString("AirportCode"));
+                            origindata.setAterm(desairport.getString("Terminal"));
+                            originlist.add(origindata);
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    JSONObject resultobject = firstobjs.getJSONObject("Results");
-                    JSONObject Faresr = resultobject.getJSONObject("Fare");
-                    Double base = Double.valueOf(Faresr.getString("BaseFare"));
-                    base_o = base.intValue();
-                    Log.wtf("valuea", String.valueOf(base_o));
-                    int bs = base_o + base_r;
-                    basefare.setText(String.valueOf(bs));
-
-                    Double tex = Double.valueOf(Faresr.getString("Tax"));
-                    tex_o = tex.intValue();
-                    Log.wtf("valuev", String.valueOf(tex_o));
-                    int tx = tex_o + text_r;
-                    texas.setText(String.valueOf(tx));
-
-
-                    Double otherch = Double.valueOf(Faresr.getString("OtherCharges"));
-                    otherch_o = otherch.intValue();
-                    Log.wtf("valuev", String.valueOf(otherch_o));
-                    int othr = otherch_o + otherch_r;
-                    otherch_text.setText(String.valueOf(othr));
-
-
-                    Double total = Double.valueOf(Faresr.getString("PublishedFare"));
-                    total_o = total.intValue();
-                    int pub = total_o + total_r;
-                    Log.wtf("values", String.valueOf(total_o));
-                    publisfare.setText(String.valueOf(pub));
-
-
-                    JSONArray sagmentarr = resultobject.getJSONArray("Segments");
-                    JSONArray sagmentinnner = sagmentarr.getJSONArray(0);
-                    for (int i = 0; i < sagmentinnner.length(); i++) {
-                        Fare_originModel origindata = new Fare_originModel();
-                        JSONObject jobjet = sagmentinnner.getJSONObject(i);
-                        origindata.setCheckin_origin(jobjet.getString("Baggage"));
-                        origindata.setCabin_origin(jobjet.getString("CabinBaggage"));
-                        origindata.setOrigin_dura(jobjet.getString("Duration") + "m");
-
-                        JSONObject airline = jobjet.getJSONObject("Airline");
-                        origindata.setOfcode1(airline.getString("AirlineCode"));
-                        origindata.setO_fname1(airline.getString("AirlineName"));
-                        origindata.setOnumber1(airline.getString("FlightNumber"));
-
-                        JSONObject origin = jobjet.getJSONObject("Origin");
-                        //origindata.setOtime1(origin.getString("DepTime"));
-                        String splitdest = origin.getString("DepTime");
-                        String[] textslitdest = splitdest.split("T");
-                        String newsplitdest1 = textslitdest[0];
-                        String newsplitdest2 = textslitdest[1];
-                        String textdepar = newsplitdest2;
-                        String sub_textdepa = textdepar.substring(0, newsplitdest2.length() - 3);
-                        //this is wrong because i made mistake in xml
-                        origindata.setOtime1(sub_textdepa);
-                        JSONObject oriairport = origin.getJSONObject("Airport");
-                        origindata.setOcity1(oriairport.getString("CityName"));
-                        origindata.setOcode1(oriairport.getString("AirportCode"));
-                        origindata.setOterm(oriairport.getString("Terminal"));
-
-                        JSONObject destination = jobjet.getJSONObject("Destination");
-                        //origindata.setAtime1(destination.getString("ArrTime"));
-                        String splitarive = destination.getString("ArrTime");
-                        String[] textslitarivtim = splitarive.split("T");
-                        String newsplitarriv = textslitarivtim[0];
-                        String newsplitarriv2 = textslitarivtim[1];
-                        //substring value
-                        String textsub = newsplitarriv2;
-                        String sub_text = textsub.substring(0, newsplitarriv2.length() - 3);
-
-                        //this is wrong because i made mistake in xml
-                        origindata.setAtime1(sub_text);
-                        JSONObject desairport = destination.getJSONObject("Airport");
-                        origindata.setAcity1(desairport.getString("CityName"));
-                        origindata.setAcode1(desairport.getString("AirportCode"));
-                        origindata.setAterm(desairport.getString("Terminal"));
-                        originlist.add(origindata);
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    originadaptr = new Farerules_roundorigin(FarerulesActivity.this, originlist);
+                    originrecyclerview.setAdapter(originadaptr);
+                    originadaptr.notifyDataSetChanged();
                 }
-                originadaptr = new Farerules_roundorigin(FarerulesActivity.this, originlist);
-                originrecyclerview.setAdapter(originadaptr);
-                originadaptr.notifyDataSetChanged();
-            }
 
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.e("LOG_VOLLEY", error.toString());
-                progressDialog.dismiss();
-            }
-        }){
-            @Override
-            public String getBodyContentType() {
-                return "application/json; charset=utf-8";
-            }
-        };
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.e("LOG_VOLLEY", error.toString());
+                    progressDialog.dismiss();
+                }
+            }) {
+                @Override
+                public String getBodyContentType() {
+                    return "application/json; charset=utf-8";
+                }
+            };
             int socketTimeout = 50000; // 30 seconds. You can change it
             RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
             jsonObjectRequest.setRetryPolicy(policy);
             requestQueue.add(jsonObjectRequest);
-        }catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }//End of makevolleyrequest method
     private void makevolleyreturn() {
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -404,7 +401,7 @@ public class FarerulesActivity extends MyBaseActivity
         }catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }//End of makevolleyreturn method
     private void termoginserv() {
         try {
             RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -472,7 +469,7 @@ public class FarerulesActivity extends MyBaseActivity
         }catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }//End of termoginserv method
     private void termserviceapi() {
         //seconde list
         final ProgressDialog progressDialog = new ProgressDialog(this);
@@ -547,5 +544,5 @@ public class FarerulesActivity extends MyBaseActivity
         e.printStackTrace();
     }
 
-    }
-}
+    }//End of termserviceapi method
+}//End of FarerulesActivity class
