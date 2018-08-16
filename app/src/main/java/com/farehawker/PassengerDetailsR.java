@@ -1,5 +1,6 @@
 package com.farehawker;
 
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -34,9 +35,8 @@ import java.util.List;
 
 import static android.text.TextUtils.isEmpty;
 import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
-public class PassengerDetails extends AppCompatActivity
+public class PassengerDetailsR extends AppCompatActivity
 {
-    String intentId;
     EditText couponCode;
     static int couponValidity = 1;
     String TAG = "PassengerDetails";
@@ -79,6 +79,9 @@ public class PassengerDetails extends AppCompatActivity
     Button continueBookingButton;
     String airlineCode;
     AwesomeValidation awesomeValidation = new AwesomeValidation(BASIC);
+    private String cabinClass;
+    private String departureR;
+    private String returnR;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -88,24 +91,25 @@ public class PassengerDetails extends AppCompatActivity
         couponCode = findViewById(R.id.couponCode);
 
         Intent intent = getIntent();
-        intentId=intent.getStringExtra("intentId");
 
-        orignp = intent.getStringExtra("originv");
-        destp = intent.getStringExtra("destinav");
+        orignp = intent.getStringExtra("originround");
+        destp = intent.getStringExtra("destinationround");
         endipp = intent.getStringExtra("enduserip");
         tokenp = intent.getStringExtra("tokenid");
         resultindp = intent.getStringExtra("resultindex");
         traceidonep = intent.getStringExtra("traceid");
 
-        adultonep = intent.getStringExtra("adultone");
-        childonep = intent.getStringExtra("childone");
-        infantsonep = intent.getStringExtra("infantsone");
-
+        adultonep = intent.getStringExtra("adultround");
+        childonep = intent.getStringExtra("childround");
+        infantsonep = intent.getStringExtra("infantsround");
+        cabinClass=intent.getStringExtra("cabinclass");
         TotalFare.setText(intent.getStringExtra("totalFare"));
         airlineCode = intent.getStringExtra("airlineCode");
+        departureR=intent.getStringExtra("departureround");
+        returnR=intent.getStringExtra("returnround");
         awesomeValidation.validate();
 
-        Toast.makeText(PassengerDetails.this, "mag" + orignp + "\n" + destp + "\n" + endipp + "\n" + tokenp + "\n" + resultindp + "\n" + traceidonep + "\n" + adultonep + "\n" + childonep + "\n" + infantsonep, Toast.LENGTH_LONG).show();
+        Toast.makeText(PassengerDetailsR.this, "mag" + orignp + "\n" + destp + "\n" + endipp + "\n" + tokenp + "\n" + resultindp + "\n" + traceidonep + "\n" + adultonep + "\n" + childonep + "\n" + infantsonep, Toast.LENGTH_LONG).show();
         infantsdob();
         Spinner_count();
         chilld_sappier();
@@ -347,7 +351,7 @@ public class PassengerDetails extends AppCompatActivity
             @Override
             public void onClick(View v) {
 
-                Intent inr = new Intent(PassengerDetails.this, Reviewdetails.class);
+                Intent inr = new Intent(PassengerDetailsR.this, Reviewdetails.class);
 
                 inr.putExtra("adultCount", adultonep);
                 inr.putExtra("childCount", childonep);
@@ -1169,7 +1173,7 @@ public class PassengerDetails extends AppCompatActivity
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetailsR.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1)
@@ -1188,7 +1192,7 @@ public class PassengerDetails extends AppCompatActivity
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetailsR.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1)
@@ -1208,7 +1212,7 @@ public class PassengerDetails extends AppCompatActivity
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetailsR.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1)
@@ -1228,7 +1232,7 @@ public class PassengerDetails extends AppCompatActivity
                 int yy = calendar.get(Calendar.YEAR);
                 int mm = calendar.get(Calendar.MONTH);
                 int dd = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetails.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
+                DatePickerDialog datePicker = new DatePickerDialog(PassengerDetailsR.this, android.R.style.Theme_Holo_Dialog, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         String date = String.valueOf(dayOfMonth) + "/" + String.valueOf(monthOfYear + 1)
@@ -1273,17 +1277,17 @@ public class PassengerDetails extends AppCompatActivity
 
                             if (response.get("value").toString() == null) {
                                 Log.i("Response1073", response.get("value").toString());
-                                Toast.makeText(PassengerDetails.this, "invalid coupon", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(PassengerDetailsR.this, "invalid coupon", Toast.LENGTH_SHORT).show();
 
                             } else {
                                 if (couponValidity == 1) {
                                     TotalFare.setText(String.valueOf(Integer.parseInt(TotalFare.getText().toString()) - my_amount));
                                     //set couponValidity to zero.Since Coupon has been used once it not valid now
                                     couponValidity = 0;
-                                    Toast.makeText(PassengerDetails.this, "Coupon Code is valid for once", Toast.LENGTH_SHORT);
+                                    Toast.makeText(PassengerDetailsR.this, "Coupon Code is valid for once", Toast.LENGTH_SHORT);
                                     Log.d("my_minus", String.valueOf(TotalFare));
                                 } else {
-                                    Toast.makeText(PassengerDetails.this, "You have already used this coupon!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(PassengerDetailsR.this, "You have already used this coupon!", Toast.LENGTH_LONG).show();
                                 }
                             }
                         } catch (JSONException je) {
@@ -1296,7 +1300,7 @@ public class PassengerDetails extends AppCompatActivity
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG, error.toString());
-                Toast.makeText(PassengerDetails.this, "Invalid Coupon Code", Toast.LENGTH_LONG).show();
+                Toast.makeText(PassengerDetailsR.this, "Invalid Coupon Code", Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(jsonRequest);
@@ -1318,7 +1322,7 @@ public class PassengerDetails extends AppCompatActivity
         }
 
     }//End of checkData method
-}//End of Class PassengerDetails
+}//End of Class PassengerDetailsR
 
 
 

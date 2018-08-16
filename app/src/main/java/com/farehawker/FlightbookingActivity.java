@@ -76,7 +76,8 @@ public class FlightbookingActivity extends AppCompatActivity
             }
         });
         //get intent values
-        if (getSupportActionBar() != null) {
+        if (getSupportActionBar() != null)
+        {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }

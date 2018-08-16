@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -44,12 +45,21 @@ import java.util.List;
 
 public class FarerulesActivity extends MyBaseActivity
 {
+    String originR;
+    String destinationR;
+    String adultR;
+    String childR;
+    String infantR;
+    String cabinR;
+    String departureR;
+    String retrunR;
+
     TextView basefare, texas,otherch_text, publisfare;
     TextView terms_cond;
     CheckBox checkBox;
     ListView origin_list;
     ListView return_list;
-    String resultindex_oneward,resultindex_return,tracidR,adultR,childR,infantsR,enduserip_round,tokenid_round;
+    String resultindex_oneward,resultindex_return,tracidR,infantsR,enduserip_round,tokenid_round;
     int base_o, base_r, tex_o, text_r, total_o, total_r,otherch_o,otherch_r;
     private RecyclerView originrecyclerview, returnRecyclerview;
     private Farerules_roundorigin originadaptr;
@@ -65,7 +75,7 @@ public class FarerulesActivity extends MyBaseActivity
     public static final String JSON_URLR = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Farequote/";
     public static final String SRV_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareRule/";
     public static final String SRO_URL = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareRule/";
-
+    Button continueBooking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -87,6 +97,13 @@ public class FarerulesActivity extends MyBaseActivity
         infantsR=intent.getStringExtra("infantR");
         enduserip_round=intent.getStringExtra("enduserip_round");
         tokenid_round=intent.getStringExtra("tokenid_round");
+
+        originR=intent.getStringExtra("originround");
+        destinationR=intent.getStringExtra("destinationround");
+        cabinR=intent.getStringExtra("cabinclass");
+        final String departureR=intent.getStringExtra("departureround");
+        final String retrunR=intent.getStringExtra("returnround");
+
         Toast.makeText(FarerulesActivity.this,"resultindex is "+resultindex_oneward+"\n"+resultindex_return+"\n"+adultR+"\n"+childR+"\n"+infantsR+"\n"+tracidR,Toast.LENGTH_SHORT).show();
         //Log.wtf("resultindex",resultindex_oneward);
         returnRecyclerview = (RecyclerView) findViewById(R.id.return_recyclerview);
@@ -102,6 +119,44 @@ public class FarerulesActivity extends MyBaseActivity
         publisfare = (TextView) findViewById(R.id.publisfare);
         checkBox = (CheckBox) findViewById(R.id.chkWindows);
         terms_cond = (TextView) findViewById(R.id.term_condi);
+        continueBooking=findViewById(R.id.roundTripContinueB);
+//        checkBox.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view)
+//            {
+//                if(!checkBox.isChecked())
+//                {
+//                    Toast.makeText(FarerulesActivity.this,"Please accept the terms and condition",Toast.LENGTH_LONG).show();
+//                }
+//
+//            }
+//        });
+        continueBooking.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View view)
+            {
+                if(!checkBox.isChecked())
+                {
+                    Toast.makeText(FarerulesActivity.this,"Please accept the Terms and Condition",Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Intent intent = new Intent(FarerulesActivity.this,PassengerDetails.class);
+                    intent.putExtra("intentId","RoundTrip");
+                    intent.putExtra("originround", originR);
+                    intent.putExtra("destinationround", destinationR);
+                    intent.putExtra("adultround", adultR);
+                    intent.putExtra("childround", childR);
+                    intent.putExtra("infantsround", infantR);
+                    intent.putExtra("cabinclass", cabinR);
+                    intent.putExtra("departureround", departureR);
+                    intent.putExtra("returnround", retrunR);
+
+                    startActivity(intent);
+                }
+            }
+        }
+    );
         terms_cond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

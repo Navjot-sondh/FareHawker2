@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         if (isOnline())
         {
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         buttn_fornextpage = (Button) findViewById(R.id.button_fornestpage);
