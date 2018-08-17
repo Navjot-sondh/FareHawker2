@@ -45,6 +45,21 @@ import java.util.List;
 
 public class FarerulesActivity extends MyBaseActivity
 {
+    //Flight Details
+    String flightCode;
+    String flightName;
+    String flightNumber;
+    String flightSeatLeft;
+    String flightDepartureTime;
+    String flightPrice;
+    String flightArrivalTime;
+    //Return Flight Details
+    String flightCodeR;
+    String flightNameR;
+    String flightNumberR;
+    String flightSeatLeftR;
+    String flightDepartureTimeR;
+    String flightPriceR;
     String originR;
     String destinationR;
     String adultR;
@@ -98,9 +113,29 @@ public class FarerulesActivity extends MyBaseActivity
         enduserip_round=intent.getStringExtra("enduserip_round");
         tokenid_round=intent.getStringExtra("tokenid_round");
 
+
         originR=intent.getStringExtra("originround");
         destinationR=intent.getStringExtra("destinationround");
         cabinR=intent.getStringExtra("cabinclass");
+
+        //Flight Details
+        flightCode=intent.getStringExtra("flightCode");
+        flightName=intent.getStringExtra("fightName");
+        flightNumber=intent.getStringExtra("flightNumber");
+        flightSeatLeft=intent.getStringExtra("flightSeatLeft");
+        flightDepartureTime=intent.getStringExtra("flightDepartureTime");
+        flightPrice=intent.getStringExtra("flightPrice");
+        flightArrivalTime=intent.getStringExtra("flightArrivalTime");
+
+        //Return Flight details
+        flightCodeR=intent.getStringExtra("flightCodeR");
+        flightNameR=intent.getStringExtra("fightNameR");
+        flightNumberR=intent.getStringExtra("flightNumberR");
+        flightSeatLeftR=intent.getStringExtra("flightSeatLeftR");
+        flightDepartureTimeR=intent.getStringExtra("flightDepartureTimeR");
+        flightPriceR=intent.getStringExtra("flightPriceR");
+        flightArrivalTime=intent.getStringExtra("flightArrivalTimeR");
+
         final String departureR=intent.getStringExtra("departureround");
         final String retrunR=intent.getStringExtra("returnround");
 
@@ -136,7 +171,7 @@ public class FarerulesActivity extends MyBaseActivity
                     intent.putExtra("destinationround", destinationR);
                     intent.putExtra("adultround", adultR);
                     intent.putExtra("childround", childR);
-                    intent.putExtra("infantsround", infantR);
+                    intent.putExtra("infantsround", infantsR);
                     intent.putExtra("cabinclass", cabinR);
                     intent.putExtra("departureround", departureR);
                     intent.putExtra("returnround", retrunR);

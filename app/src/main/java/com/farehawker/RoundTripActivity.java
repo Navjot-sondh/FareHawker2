@@ -35,8 +35,24 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoundTripActivity extends AppCompatActivity implements ClickListener, LeftclickI {
+public class RoundTripActivity extends AppCompatActivity implements ClickListener, LeftclickI
+{
+    int flightImage;
 
+    String flightCode;
+    String flightName;
+    String flightNumber;
+    String flightSeatLeft;
+    String flightDepartureTime;
+    String flightPrice;
+    String flightArrivalTime;
+    String flightCodeR;
+    String flightNameR;
+    String flightNumberR;
+    String flightSeatLeftR;
+    String flightDepartureTimeR;
+    String flightPriceR;
+    String flightArrivalTimeR;
     Intent intent;
     String TAG = "RoundTripActivity";
     Spinner onward_spin, return_spin;
@@ -54,19 +70,23 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
     LinearLayout Linvisible;
     TextView Book_btn;
     String EndUserIp_Round = "216.10.251.69";
-    String TokenId_Round = "11c18fd5-1bfc-483b-a3a6-a5ff7c9ba9cb";
+    String TokenId_Round = "303a3db5-c8af-42be-a91b-d5f7f31aec93";
     String originacc, destinationacc, adultacc, childacc, infantacc, cabinacc, depdateacc, returndateacc;
     String urlJsonroundtrip = "http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search/";
+    private int flightImageR;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_round_trip);
         text_price = (TextView) findViewById(R.id.price_text);
         Book_btn = (TextView) findViewById(R.id.book_btn);
-        Book_btn.setOnClickListener(new View.OnClickListener() {
+        Book_btn.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent in = new Intent(RoundTripActivity.this, FarerulesActivity.class);
                 in.putExtra("adultR", adultacc);
                 in.putExtra("childR", childacc);
@@ -83,6 +103,24 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
                 in.putExtra("cabinclass", cabinacc);
                 in.putExtra("departureround", depdateacc);
                 in.putExtra("returnround", returndateacc);
+
+                //Flight Details
+                in.putExtra("flightCode",flightCode);
+                in.putExtra("fightName",flightName);
+                in.putExtra("flightNumber",flightNumber);
+                in.putExtra("flightSeatLeft",flightSeatLeft);
+                in.putExtra("flightDepartureTime",flightDepartureTime);
+                in.putExtra("flightPrice",flightPrice);
+                in.putExtra("flightArrivalTime",flightArrivalTime);
+
+                //Return Flight details
+                in.putExtra("flightCodeR",flightCodeR);
+                in.putExtra("fightNameR",flightNameR);
+                in.putExtra("flightNumberR",flightNumberR);
+                in.putExtra("flightSeatLeftR",flightSeatLeftR);
+                in.putExtra("flightDepartureTimeR",flightDepartureTimeR);
+                in.putExtra("flightPriceR",flightPriceR);
+                in.putExtra("flightArrivalTimeR",flightArrivalTimeR);
 
                 startActivity(in);
             }
@@ -208,7 +246,7 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             //first object
             JSONObject jsonobjectt = new JSONObject();
             jsonobjectt.put("EndUserIp", "216.10.251.69");
-            jsonobjectt.put("TokenId", "11c18fd5-1bfc-483b-a3a6-a5ff7c9ba9cb");
+            jsonobjectt.put("TokenId", "303a3db5-c8af-42be-a91b-d5f7f31aec93");
             jsonobjectt.put("AdultCount", adultacc);
             jsonobjectt.put("ChildCount", childacc);
             jsonobjectt.put("InfantCount", infantacc);
@@ -246,9 +284,12 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
                             JSONArray sagmentarray = jobjet.getJSONArray("Segments");
                             JSONArray sagmentsubarray = sagmentarray.getJSONArray(0);
                             JSONObject sagmentobj = sagmentsubarray.getJSONObject(0);
-                            if (sagmentobj.has("NoOfSeatAvailable")) {
+                            if (sagmentobj.has("NoOfSeatAvailable"))
+                            {
                                 roundset.setSeatsleftneway(sagmentobj.getString("NoOfSeatAvailable"));
-                            } else {
+                            }
+                            else
+                            {
                                 roundset.setSeatsleftneway(" ");
                             }
                             roundset.setStopsneway(sagmentobj.getString("StopPoint"));
@@ -333,7 +374,8 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
                             Log.wtf("printlog", listright.toString());
                             progressDialog.dismiss();
                         }
-                    } catch (JSONException e) {
+                    }
+                    catch (JSONException e) {
                         e.printStackTrace();
                     }
                     leftadaptor = new RoundtripOriginAdaptor(RoundTripActivity.this, roundleftlist);
@@ -380,20 +422,15 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
         Linvisible.setVisibility(View.VISIBLE);
         finalprice = Integer.parseInt(rightmodel.getReturnroundtriponewayprice());
         resutlt_retunr = rightmodel.getResultindex_return();
-        String flightCode=rightmodel.getReturnflightcodearrive();
-        String flightName=rightmodel.getReturnflightnamearrive();
-        String flightNumber=rightmodel.getReturnflightnumberarrive();
-        String flightSeatLeft=rightmodel.getReturnroundtriponewayseatsleft();
-        String flightDepartureTime=rightmodel.getReturnflightonewaydiparturetime();
-        String flightPrice=rightmodel.getReturnroundtriponewayprice();
-        int flightImage=rightmodel.getImgagerountreturn();
-        intent.putExtra("flightCodeR",flightCode);
-        intent.putExtra("flightNameR",flightName);
-        intent.putExtra("flightNumberR",flightNumber);
-        intent.putExtra("flightSeatLeftR",flightSeatLeft);
-        intent.putExtra("flightDepartureTimeR",flightDepartureTime);
-        intent.putExtra("flightPriceR",flightPrice);
 
+         flightCodeR=rightmodel.getReturnflightcodearrive();
+         flightNameR=rightmodel.getReturnflightnamearrive();
+         flightNumberR=rightmodel.getReturnflightnumberarrive();
+         flightSeatLeftR=rightmodel.getReturnroundtriponewayseatsleft();
+         flightDepartureTimeR=rightmodel.getReturnflightonewaydiparturetime();
+         flightPriceR=rightmodel.getReturnroundtriponewayprice();
+         flightImageR=rightmodel.getImgagerountreturn();
+         flightArrivalTimeR=rightmodel.getReturnflightonewaytimearrive();
 
         int f = finalprice + priceid;
         text_price.setText(String.valueOf(f));
@@ -409,20 +446,13 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
         Linvisible.setVisibility(View.VISIBLE);
         RoundtripModelclass leftmodel = (RoundtripModelclass) leftadaptor.getItem(position);
 
-        String flightCode=leftmodel.getCodeneway();
-        String flightName=leftmodel.getFlightnameneway();
-        String flightNumber=leftmodel.getNumberneway();
-        String flightSeatLeft=leftmodel.getSeatsleftneway();
-        String flightDepartureTime=leftmodel.getDiparturetimeneway();
-        String flightPrice=leftmodel.getPriceneway();
-        String flightArrivalTime=leftmodel.getOrigintimeneway();
-        intent.putExtra("ArrivalTime",flightArrivalTime);
-        intent.putExtra("flightCode",flightCode);
-        intent.putExtra("flightName",flightName);
-        intent.putExtra("flightNumber",flightNumber);
-        intent.putExtra("flightSeatLeft",flightSeatLeft);
-        intent.putExtra("flightDeparture",flightDepartureTime);
-        intent.putExtra("flightPrice",flightPrice);
+         flightCode=leftmodel.getCodeneway();
+         flightName=leftmodel.getFlightnameneway();
+         flightNumber=leftmodel.getNumberneway();
+         flightSeatLeft=leftmodel.getSeatsleftneway();
+         flightDepartureTime=leftmodel.getDiparturetimeneway();
+         flightPrice=leftmodel.getPriceneway();
+         flightArrivalTime=leftmodel.getOrigintimeneway();
 
         priceid = Integer.parseInt(leftmodel.getPriceneway());
         result_oneward = leftmodel.getResultindex_oneward();
@@ -433,6 +463,5 @@ public class RoundTripActivity extends AppCompatActivity implements ClickListene
             Book_btn.setVisibility(View.VISIBLE);
         }
         Toast.makeText(getApplicationContext(), "It is working " + b, Toast.LENGTH_SHORT).show();
-    }
-
-}
+    }//End of leftitemclick method
+}//End of RoundTripActivity class
