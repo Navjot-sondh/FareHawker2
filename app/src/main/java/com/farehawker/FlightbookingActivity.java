@@ -109,6 +109,7 @@ public class FlightbookingActivity extends AppCompatActivity
         citynameFROM = getIntent().getStringExtra("cityname");
         countrynameFROm=getIntent().getStringExtra("countryname");
 
+        //Testing git
         //set the total intent
         text_tolocation.setText(AirportcodeTO);
         text_tocountrycity.setText(citynameTO);
