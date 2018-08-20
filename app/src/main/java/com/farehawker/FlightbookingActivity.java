@@ -396,7 +396,8 @@ public class FlightbookingActivity extends AppCompatActivity
                                 messageView.setGravity(Gravity.CENTER);
                             }
                             //Executed when
-                            else {
+                            else
+                                {
                                 Intent in = new Intent(FlightbookingActivity.this, RoundTripActivity.class);
                                 in.putExtra("originround", fromc);
                                 in.putExtra("destinationround", toc);
@@ -408,7 +409,8 @@ public class FlightbookingActivity extends AppCompatActivity
                                 in.putExtra("cabinclass", cabinclas);
                                 startActivity(in);
                             }
-                        } else {
+                        } else
+                            {
                             Intent inr = new Intent(FlightbookingActivity.this, OnewayActivityresult.class);
                             inr.putExtra("originround", fromc);
                             inr.putExtra("destinationround", toc);
