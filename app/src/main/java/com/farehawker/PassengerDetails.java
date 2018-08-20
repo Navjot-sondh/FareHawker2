@@ -112,7 +112,7 @@ public class PassengerDetails extends AppCompatActivity
         infants_sappier();
         adultcount = (TextView) findViewById(R.id.maincount_adult);
         childcount = (TextView) findViewById(R.id.maincount_child);
-        infantscount = (TextView) findViewById(R.id.infants_count);
+        infantscount = (TextView) findViewById(R.id.maincount_infant);
         adultcount.setText(adultonep);
         childcount.setText(childonep);
         infantscount.setText(infantsonep);
@@ -339,7 +339,6 @@ public class PassengerDetails extends AppCompatActivity
         if (infantsonep.equals("3")) {
             Linear_infant4.setVisibility(View.GONE);
         }
-
         final String Adultstr = adultOneFirstName.getText().toString();
         final String adl = adultOneLastName.getText().toString();
         continueBookingButton = (Button) findViewById(R.id.contineee);
@@ -348,7 +347,6 @@ public class PassengerDetails extends AppCompatActivity
             public void onClick(View v) {
 
                 Intent inr = new Intent(PassengerDetails.this, Reviewdetails.class);
-
                 inr.putExtra("adultCount", adultonep);
                 inr.putExtra("childCount", childonep);
                 inr.putExtra("infantCount", infantsonep);
@@ -1038,7 +1036,7 @@ public class PassengerDetails extends AppCompatActivity
             }
         });
 
-    }
+    }//child_s
 
     private void infants_sappier() {
 

@@ -163,6 +163,7 @@ public class FarerulesActivity extends MyBaseActivity
                 {
                     Toast.makeText(FarerulesActivity.this,"Please accept the Terms and Condition",Toast.LENGTH_LONG).show();
                 }
+
                 else
                 {
                     Intent intent = new Intent(getApplicationContext(),PassengerDetailsR.class);
@@ -178,7 +179,8 @@ public class FarerulesActivity extends MyBaseActivity
                     //Flight Details
                     intent.putExtra("enduserip_round",enduserip_round);
                     intent.putExtra("tokenid_round",tokenid_round);
-
+                    intent.putExtra("flightPrice",flightPrice);
+                    intent.putExtra("flightPriceR",flightPriceR);
 
                     startActivity(intent);
                 }

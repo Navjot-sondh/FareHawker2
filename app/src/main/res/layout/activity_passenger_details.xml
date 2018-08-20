@@ -22,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <LinearLayout
+                    android:id="@+id/adultCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#efe6e6"
@@ -432,6 +433,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <LinearLayout
+                    android:id="@+id/childCount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#efe6e6"
@@ -449,7 +451,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        android:text="1"/>
+                        android:text="1"
+                    />
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/linear_child1"
@@ -797,16 +800,19 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/infants"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        android:text="Infants "/>
+                        android:text="Infants"/>
                     <TextView
-                        android:id="@+id/infants_count"
+                        android:textSize="20sp"
+                        android:id="@+id/maincount_infant"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"
-                        android:text="1"/>
+                        android:text=" 1"
+                        />
+
                 </LinearLayout>
 
                 <LinearLayout
